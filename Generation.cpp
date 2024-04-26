@@ -48,8 +48,8 @@ void funcC(node_t* node){
     printf("in. funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
-void funcD(node_t*){
-    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
+void funcD(node_t* node){
+    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
     funcL(node_t*);
 }
 // if first A > second A, do H | do H F times
@@ -63,8 +63,8 @@ void funcH() {}
 // print integer value to screen (sum, int, or identifier)
 void funcJ(){}
 // H ? D | Identifier
-void funcL(node_t*){
-    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
+void funcL(node_t* node){
+    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcH();
 //    funcD();
 }
