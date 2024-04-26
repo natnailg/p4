@@ -44,10 +44,12 @@ void funcC(node_t* node) {
         return;
     }
     if (node->left != NULL) {
-//  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
+        //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
         fprintf(global_file_pointer, "READ %s", node->left->token_instance);
         printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 
+    }else if(node->right != NULL) {
+        printf("funC--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
     }else {
         printf("Node C is empty!\n");
     }
@@ -59,8 +61,9 @@ void funcD(node_t* node){
         printf("Error: NULL node encountered in funcC\n");
         return;
     }
-
-    printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
+    if (node->left != NULL) {
+        printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
+    }
     funcL(node->left);
 }
 // if first A > second A, do H | do H F times
