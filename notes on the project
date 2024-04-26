@@ -1,0 +1,6 @@
+pass the pointer to node, to each of these functions of the non-terminals. (pass pointer)
+key: we are using existing tree, and we're going to write function to write off code to our ASM program.
+
+1.1 // first we have we need to setup the output file, open it and start writing to it. (this is going to be our  assembly file).
+1.2 // then We need to call it with function S, with our root ptr.
+1.2.1 // then our s function will call function C with left child(first child), and then function with child D center (second child).

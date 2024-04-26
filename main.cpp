@@ -86,7 +86,7 @@ int main(int argc, char* argv[]){
     const char *file_path = "output_p4.txt";
     open_file_global(file_path);
 
-    funcS();
+    funcS(root);
 
     close_file();
     /////////////////////////////////////////////////////////

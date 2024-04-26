@@ -5,7 +5,7 @@
 #ifndef P4_GENERATION_H
 #define P4_GENERATION_H
 
-void funcS();
+void funcS(node_t*);
 void funcA();
 void funcB();
 void funcC();

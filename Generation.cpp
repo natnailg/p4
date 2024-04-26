@@ -13,8 +13,7 @@ FILE *global_file_pointer = NULL; // Global variable definition
 void open_file_global(const char *file_path) {
     global_file_pointer = fopen(file_path, "w"); // Open file in append mode
     if (global_file_pointer == NULL) {
-        perror("Error opening file");
-        // Handle error
+        perror("Error opening file\n");
     }
 }
 
@@ -27,17 +26,20 @@ void close_file() {
 
 
 // read in int and allocate memory to, any number of additional operations
-void funcS() {
+void funcS(node_t* root) {
     fprintf(global_file_pointer, "Calling C and D in S\n");
+    printf("%S -- %S ", root->left, root->center);
     funcC();
-//    funcD();
+    funcD();
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
 void funcA(){}
 // assigns the value of A to identifier t2
 void funcB(){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
+//in class example for c is
 void funcC(){
+//    fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
     fprintf(global_file_pointer, "Calling from C\n");
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
