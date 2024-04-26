@@ -48,8 +48,8 @@ void funcC(node_t* node) {
         fprintf(global_file_pointer, "READ %s", node->left->token_instance);
         printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 
-    }else if(node->right != NULL) {
-        printf("funC--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
+    }else if(node->center != NULL) {
+        printf("funC--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
     }else {
         printf("Node C is empty!\n");
     }
@@ -64,8 +64,8 @@ void funcD(node_t* node){
     if (node->left != NULL) {
         printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
 
-    }else if(node->right != NULL) {
-        printf("funD--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
+    }else if(node->center != NULL) {
+        printf("funD--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
 
     }else {
         printf("Node C is empty!\n");
@@ -86,9 +86,14 @@ void funcH() {}
 void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
-    printf("\nfuncL: %c -- %s \n", node->right->Label, node->right->token_instance);
-    printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
 
+    if (node->center != NULL) {
+        printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
+
+    }else if (node->left != NULL){
+
+        printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
+    }
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcH();
 //    funcD();
