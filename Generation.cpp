@@ -110,7 +110,7 @@ void funcJ(){}
 void funcL(node_t* node){
 
 
-    if (node->left != NULL) {
+    if (node->left != NULL && (node->left->token_instance == "Empty") == 0) ) {
         printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcH(node->left);
     }
