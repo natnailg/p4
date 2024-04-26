@@ -1,8 +1,6 @@
 //
 // Created by Natnail on 4/6/2024.
 //
-
-
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,6 +10,7 @@
 #include "Parser.h"
 #include "BuildTree.h"
 #include "TreeNode.h"
+#include "Generation.h"
 
 //Global vars
 char nextChar;  // we will use this to look for the next character
@@ -78,7 +77,7 @@ node_t* parser(char* filename) {
 
 
     tokens = Scanner();
-
+    funcS(root); //calling it.
 
     root = S(); // call FUNCTION S
 

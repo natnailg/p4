@@ -1,7 +1,7 @@
 CC       = g++
 CFLAGS  = -g -Wall -std=c++11
 TARGET  = P4
-OBJS    = main.o Parser.o scanner.o BuildTree.o testTree.o semantics.o
+OBJS    = main.o Parser.o scanner.o BuildTree.o testTree.o semantics.o Generation.o
 
 all: $(TARGET)
 
@@ -25,6 +25,9 @@ testTree.o: testTree.cpp testTree.h
 
 semantics.o: semantics.cpp semantics.h
 	$(CC) $(CFLAGS) -c semantics.cpp
+
+Generation.o: Generation.cpp Generation.h
+	$(CC) $(CFLAGS) -c Generation.cpp
 
 clean:
 	/bin/rm -f *.o $(TARGET)
