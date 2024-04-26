@@ -30,7 +30,7 @@ void funcS(node_t* root) {
     fprintf(global_file_pointer, "Calling C and D in S\n");
     printf("\n %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
-//    funcD(root->center);
+    funcD(root->center);
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
 void funcA(){}
@@ -43,16 +43,15 @@ void funcC(node_t* node){
         printf("Error: NULL node encountered in funcC\n");
         return;
     }
-
-    if (node->Label == ' '){
-        printf("hello in node label\n");
-    }
 //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
+    fprintf(global_file_pointer, "READ %s", node->left->token_instance);
     printf("in. funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
-    fprintf(global_file_pointer, "Calling from C\n");
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
-void funcD(){}
+void funcD(node_t*){
+    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
+    funcL(node_t*);
+}
 // if first A > second A, do H | do H F times
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
@@ -64,6 +63,10 @@ void funcH() {}
 // print integer value to screen (sum, int, or identifier)
 void funcJ(){}
 // H ? D | Identifier
-void funcL(){}
+void funcL(node_t*){
+    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
+//    funcH();
+//    funcD();
+}
 // K -> F ?$ | . (first set of K = t1 t2 | .
 void funcK(){}
