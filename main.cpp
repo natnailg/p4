@@ -84,6 +84,8 @@ int main(int argc, char* argv[]){
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
     funcS();
+
+    close_file();
     /////////////////////////////////////////////////////////
     // Free the memory allocated for the
     freeNode(root);
