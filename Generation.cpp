@@ -9,7 +9,7 @@
 #include "Generation.h"
 
 FILE *global_file_pointer = NULL; // Global variable definition
-// function to open the global file
+// function to open the global files
 void open_file_global(const char *file_path) {
     global_file_pointer = fopen(file_path, "w"); // Open file in append mode
     if (global_file_pointer == NULL) {
