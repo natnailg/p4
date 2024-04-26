@@ -60,7 +60,7 @@ void funcD(node_t* node){
         return;
     }
 
-    printf("\nfuncD: %c -- %c \n", node->left->Label, node->left->Label);
+    printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
     funcL(node->left);
 }
 // if first A > second A, do H | do H F times
@@ -75,7 +75,7 @@ void funcH() {}
 void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
-    printf("\nfuncL: %c -- %c \n", node->left->Label, node->left->Label);
+    printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
 
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcH();
