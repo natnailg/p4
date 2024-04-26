@@ -173,19 +173,13 @@ node_t* C(){
         // printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         //printf("Token Instance: %s \n", tokens.tokeninstance);
-//
-//        node_t* c_token_ptr = createNode(' ');
-//        c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
-//        strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
-//        c_token_ptr->token_ID= tokens.tokenid; // for the semantics evaluation
-//        P->left = c_token_ptr;
 
+        node_t* c_token_ptr = createNode(' ');
+        c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
+        strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
+        c_token_ptr->token_ID= tokens.tokenid; // for the semantics evaluation
+        P->left = c_token_ptr;
 
-//        node_t* P = createNode(' ');
-        P->token_id = strdup(tokenNames[tokens.tokenid]);
-        strncpy(P->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
-        P->token_ID= tokens.tokenid; // for the semantics evaluation
-        P->left = P;
 
         //printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_token_ptr->token_instance );
         //printf("tokens.tokenid: %d---%s\n", tokens.tokenid, tokenNames[tokens.tokenid]);
@@ -197,18 +191,11 @@ node_t* C(){
         if(tokens.tokeninstance[0] == '*'){
             // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-//            node_t* c_tokenptr_2 = createNode(' ');
-//            // c_tokenptr_2->token_id = strdup(tokenNames[tokens.tokenid]);
-//            // c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
-//            strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
-//            P->center = c_tokenptr_2;
-
-//            node_t* P = createNode(' ');
+            node_t* c_tokenptr_2 = createNode(' ');
             // c_tokenptr_2->token_id = strdup(tokenNames[tokens.tokenid]);
             // c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
-            strncpy(P->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
-            P->center = P;
-
+            strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->center = c_tokenptr_2;
 
             tokens = Scanner();
             // printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
