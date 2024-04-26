@@ -35,7 +35,9 @@ void funcS(node_t* root) {
 // A->FK (we will just call those functions, First set of A = t1 t2)
 void funcA(){}
 // assigns the value of A to identifier t2
-void funcB(){}
+void funcB(node_t* node){
+
+}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
 void funcC(node_t* node) {
@@ -81,7 +83,25 @@ void funcF(){}
 // assignment | read int and allocate memory | print value to screen
 void funcG(){}
 // if, for | assignment, read int and allocate memory, print value
-void funcH() {}
+void funcH(node_t*){
+
+    if ((node->left->token_instance == "Empty") == 0){
+        printf("H This is empty!!\n");
+        return;
+    }else {
+        if (node->left != NULL) {
+            printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
+        }
+
+        if (node->center != NULL) {
+            printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
+        }
+        if (node->right != NULL) {
+            printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
+        }
+
+    }
+}
 // print integer value to screen (sum, int, or identifier)
 void funcJ(){}
 // H ? D | Identifier
@@ -108,8 +128,8 @@ void funcL(node_t* node){
      * else H(left), L(right)
      **/
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
-//    funcH();
-//    funcD();
+    funcH(node->left);
+    funcL( node->right);
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
 void funcK(){}

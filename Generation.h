@@ -7,13 +7,13 @@
 
 void funcS(node_t*);
 void funcA();
-void funcB();
+void funcB(node_t*);
 void funcC(node_t*);
 void funcD(node_t*);
 void funcE();
 void funcF();
 void funcG();
-void funcH();
+void funcH(node_t*);
 void funcJ();
 void funcL(node_t*);
 void funcK();
