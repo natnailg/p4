@@ -109,10 +109,7 @@ void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
 
-    if ((node->left->token_instance == "Empty") == 0){
-        printf("L- This is empty!!\n");
-        return;
-    }
+
     if (node->left != NULL) {
         printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcH(node->left);
@@ -127,6 +124,10 @@ void funcL(node_t* node){
         funcL( node->right);
     }
 
+    if ((node->left->token_instance == "Empty") == 0){
+        printf("L- This is empty!!\n");
+        return;
+    }
 
     /*
      * if child is empty return
