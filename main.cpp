@@ -83,6 +83,9 @@ int main(int argc, char* argv[]){
 //    Symbol_Table_print(); //calling it to print the memory table.
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
+    const char *file_path = "output_p4.txt"
+    open_file_global(file_path);
+
     funcS();
 
     close_file();

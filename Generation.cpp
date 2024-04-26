@@ -8,7 +8,7 @@
 #include "TreeNode.h"
 #include "Generation.h"
 
-FILE *global_file_pointer; // Global variable definition
+extern FILE *global_file_pointer; // Global variable definition
 // function to open the global file
 void open_file_global(const char *file_path) {
     global_file_pointer = fopen(file_path, "w"); // Open file in append mode
@@ -39,7 +39,6 @@ void funcB(){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 void funcC(){
     fprintf(global_file_pointer, "Calling from C\n");
-
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(){}
@@ -56,4 +55,4 @@ void funcJ(){}
 // H ? D | Identifier
 void funcL(){}
 // K -> F ?$ | . (first set of K = t1 t2 | .
-void funck(){}
+void funcK(){}
