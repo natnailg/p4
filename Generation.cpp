@@ -28,7 +28,7 @@ void close_file() {
 // read in int and allocate memory to, any number of additional operations
 void funcS(node_t* root) {
     fprintf(global_file_pointer, "Calling C and D in S\n");
-    printf("\n %c -- %c \n", root->left, root->center);
+    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
 //    funcD(root->center);
 }
