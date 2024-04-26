@@ -111,21 +111,21 @@ void funcL(node_t* node){
 
 
     if (node->left != NULL) {
-        printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
+        printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcH(node->left);
     }
 
     if (node->center != NULL) {
-        printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
+        printf("\n center funcL: %c -- %s \n", node->center->Label, node->center->token_instance);
     }
 
     if (node->right != NULL) {
-        printf("\nfuncL: %c -- %s \n", node->right->Label, node->right->token_instance);
+        printf("\nright funcL: %c -- %s \n", node->right->Label, node->right->token_instance);
         funcL( node->right);
     }
 
     if ((node->left->token_instance == "Empty") == 0){
-        printf("L- This is empty!!\n");
+        printf("E-L- This is empty!!\n");
         return;
     }
 
