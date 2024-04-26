@@ -44,7 +44,7 @@ void funcC(node_t* node){
         return;
     }
 //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
-    printf("in. funC--  %c  \n", node->left->Label);
+    printf("in. funC--  %c  \n", node->left);
     fprintf(global_file_pointer, "Calling from C\n");
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
