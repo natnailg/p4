@@ -110,13 +110,13 @@ void funcJ(){}
 void funcL(node_t* node){
 
 
-    if (node->left != NULL && ((node->left->token_instance != "Empty") == 0 ) ) {
+    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0 ) ) {
         printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcH(node->left);
     }
 
     if (node->center != NULL) {
-        printf("\n center funcL: %c -- %s \n", node->center->Label, node->center->token_instance);
+        printf("\ncenter funcL: %c -- %s \n", node->center->Label, node->center->token_instance);
     }
 
     if (node->right != NULL) {
