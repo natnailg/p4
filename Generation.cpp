@@ -48,7 +48,8 @@ void funcC(node_t* node) {
         fprintf(global_file_pointer, "READ %s", node->left->token_instance);
         printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 
-    }else if(node->center != NULL) {
+    }
+    if(node->center != NULL) {
         printf("funC--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
     }else {
         printf("Node C is empty!\n");
