@@ -8,7 +8,7 @@
 void funcS(node_t*);
 void funcA();
 void funcB();
-void funcC();
+void funcC(node_t*);
 void funcD();
 void funcE();
 void funcF();
