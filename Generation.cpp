@@ -58,14 +58,14 @@ void funcC(node_t* node) {
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     if (node == NULL) {
-        printf("Error: NULL node encountered in funcC\n");
+        printf("Error: NULL node encountered in funcD\n");
         return;
     }
     if (node->left != NULL) {
         printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
 
     }else if(node->right != NULL) {
-        printf("funC--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
+        printf("funD--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
 
     }else {
         printf("Node C is empty!\n");
@@ -86,6 +86,7 @@ void funcH() {}
 void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
+    printf("\nfuncL: %c -- %s \n", node->right->Label, node->right->token_instance);
     printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
 
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
