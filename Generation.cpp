@@ -50,7 +50,7 @@ void funcC(node_t* node){
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     printf("\n %c -- %c \n", node->left->Label, node->center->Label);
-    funcL(node);
+//    funcL(node);
 }
 // if first A > second A, do H | do H F times
 void funcE(){}
@@ -64,7 +64,7 @@ void funcH() {}
 void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
-    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
+//    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcH();
 //    funcD();
 }
