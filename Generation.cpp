@@ -48,7 +48,7 @@ void funcC(node_t* node){
         printf("hello in node label\n");
     }
 //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
-    printf("in. funC--  %c  -- %s\n", node->left->Label, node->token_instance);
+    printf("in. funC--  %c  -- %s\n", node->left->token_id, node->token_instance);
     fprintf(global_file_pointer, "Calling from C\n");
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
