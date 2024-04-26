@@ -1,6 +1,6 @@
 CC       = g++
 CFLAGS  = -g -Wall -std=c++11
-TARGET  = P3
+TARGET  = P4
 OBJS    = main.o Parser.o scanner.o BuildTree.o testTree.o semantics.o
 
 all: $(TARGET)
@@ -28,4 +28,3 @@ semantics.o: semantics.cpp semantics.h
 
 clean:
 	/bin/rm -f *.o $(TARGET)
-
