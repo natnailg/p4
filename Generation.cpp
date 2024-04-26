@@ -28,7 +28,7 @@ void close_file() {
 // read in int and allocate memory to, any number of additional operations
 void funcS(node_t* root) {
     fprintf(global_file_pointer, "Calling C and D in S\n");
-    printf("\n %c -- %c \n", root->left->Label, root->center->Label);
+    printf("\nfuncS %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
     funcD(root->center);
 }
@@ -38,17 +38,28 @@ void funcA(){}
 void funcB(){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
-void funcC(node_t* node){
+void funcC(node_t* node) {
     if (node == NULL) {
         printf("Error: NULL node encountered in funcC\n");
         return;
     }
+    if (node->left != NULL) {
 //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
-    fprintf(global_file_pointer, "READ %s", node->left->token_instance);
-    printf("in. funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
+        fprintf(global_file_pointer, "READ %s", node->left->token_instance);
+        printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
+
+    }else {
+        printf("Node C is empty!\n");
+    }
 }
+
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
+    if (node == NULL) {
+        printf("Error: NULL node encountered in funcC\n");
+        return;
+    }
+
     printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcL(node);
 }
