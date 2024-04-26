@@ -90,14 +90,14 @@ void funcL(node_t* node){
     if ((node->left->token_instance == "Empty") == 0){
         printf("This is empty!!\n");
         return;
-    }
-    if (node->left != NULL){
-        printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
-    }
+    }else{
+        if (node->left != NULL){
+            printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
+        }
 
-    if (node->center != NULL) {
-        printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
-
+        if (node->center != NULL) {
+            printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
+        }
     }
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcH();
