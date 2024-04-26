@@ -60,7 +60,7 @@ void funcD(node_t* node){
         return;
     }
 
-    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
+//    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
 //    funcL(node);
 }
 // if first A > second A, do H | do H F times
