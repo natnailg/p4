@@ -89,7 +89,7 @@ void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
 
-    if (node->left->token_instance == 'Empty'){
+    if (node->left->token_instance == "Empty"){
         printf("This is empty!!\n");
         return;
     }
