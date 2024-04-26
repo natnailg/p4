@@ -64,7 +64,7 @@ void funcD(node_t* node){
     }
     if (node->left != NULL) {
         printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
-
+        funcL(node->left);
     }
     if(node->center != NULL) {
         printf("funD--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
@@ -74,7 +74,7 @@ void funcD(node_t* node){
 
     }
 
-    funcL(node->left);
+
 }
 // if first A > second A, do H | do H F times
 void funcE(){}
