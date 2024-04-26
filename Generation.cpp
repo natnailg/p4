@@ -83,7 +83,7 @@ void funcF(){}
 // assignment | read int and allocate memory | print value to screen
 void funcG(){}
 // if, for | assignment, read int and allocate memory, print value
-void funcH(node_t*){
+void funcH(node_t* node){
 
     if ((node->left->token_instance == "Empty") == 0){
         printf("H This is empty!!\n");
