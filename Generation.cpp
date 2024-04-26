@@ -30,7 +30,7 @@ void funcS(node_t* root) {
     fprintf(global_file_pointer, "Calling C and D in S\n");
     printf("%c -- %c \n", root->left, root->center);
     funcC(root->left);
-    funcD(root->center);
+//    funcD(root->center);
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
 void funcA(){}
@@ -39,8 +39,12 @@ void funcB(){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
 void funcC(node_t* node){
-//    fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
-    printf("in. funC--  %c  \n", node->left);
+    if (node == NULL) {
+        printf("Error: NULL node encountered in funcC\n");
+        return;
+    }
+//  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
+    printf("in. funC--  %c  \n", node->left->Label);
     fprintf(global_file_pointer, "Calling from C\n");
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
