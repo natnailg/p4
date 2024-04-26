@@ -88,19 +88,19 @@ void funcH(node_t* node){
     if ((node->left->token_instance == "Empty") == 0){
         printf("H This is empty!!\n");
         return;
-    }else {
-        if (node->left != NULL) {
-            printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
-        }
-
-        if (node->center != NULL) {
-            printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
-        }
-        if (node->right != NULL) {
-            printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
-        }
-
     }
+    if (node->left != NULL) {
+        printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
+    }
+
+    if (node->center != NULL) {
+        printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
+    }
+    if (node->right != NULL) {
+        printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
+    }
+
+
 }
 // print integer value to screen (sum, int, or identifier)
 void funcJ(){}
