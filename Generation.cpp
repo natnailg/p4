@@ -63,7 +63,7 @@ void funcD(node_t* node){
         return;
     }
     if (node->left != NULL) {
-        printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
+        printf("funcD: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcL(node->left);
     }
     if(node->center != NULL) {
@@ -108,28 +108,31 @@ void funcJ(){}
 void funcL(node_t* node){
 
     if ((node->left->token_instance == "Empty") == 0){
-        printf("This is empty!!\n");
+        printf("L- This is empty!!\n");
         return;
-    }else {
-        if (node->left != NULL) {
-            printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
-        }
-
-        if (node->center != NULL) {
-            printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
-        }
-        if (node->right != NULL) {
-            printf("\nfuncL: %c -- %s \n", node->right->Label, node->right->token_instance);
-        }
-
     }
+    if (node->left != NULL) {
+        printf("\nfuncL: %c -- %s \n", node->left->Label, node->left->token_instance);
+        funcH(node->left);
+    }
+
+    if (node->center != NULL) {
+        printf("\nfuncL: %c -- %s \n", node->center->Label, node->center->token_instance);
+    }
+
+    if (node->right != NULL) {
+        printf("\nfuncL: %c -- %s \n", node->right->Label, node->right->token_instance);
+        funcL( node->right);
+    }
+
+
     /*
      * if child is empty return
      * else H(left), L(right)
      **/
 //    printf("\n %c -- %c \n", node->left->Label, node->center->Label);
-    funcH(node->left);
-    funcL( node->right);
+
+
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
 void funcK(){}
