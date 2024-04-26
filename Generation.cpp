@@ -63,7 +63,15 @@ void funcD(node_t* node){
     }
     if (node->left != NULL) {
         printf("\nfuncD: %c -- %s \n", node->left->Label, node->left->token_instance);
+
+    }else if(node->right != NULL) {
+        printf("funC--  %c  -- %s\n", node->right->token_id, node->right->token_instance);
+
+    }else {
+        printf("Node C is empty!\n");
+
     }
+
     funcL(node->left);
 }
 // if first A > second A, do H | do H F times
