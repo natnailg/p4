@@ -52,7 +52,7 @@ void funcC(node_t* node) {
         printf("Node C is empty!\n");
     }
 }
-
+//
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     if (node == NULL) {
