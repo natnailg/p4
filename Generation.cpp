@@ -85,6 +85,8 @@ void funcG(){}
 // if, for | assignment, read int and allocate memory, print value
 void funcH(node_t* node){
 
+    printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
+
     if ((node->left->token_instance == "Empty") == 0){
         printf("H This is empty!!\n");
         return;
