@@ -51,8 +51,6 @@ void funcC(node_t* node) {
     }
     if(node->center != NULL) {
         printf("funC--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
-    }else {
-        printf("Node C is empty!\n");
     }
 }
 //
@@ -89,7 +87,7 @@ void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
 
-    if (node->left->token_instance == "Empty"){
+    if ((node->left->token_instance == "Empty") == 0){
         printf("This is empty!!\n");
         return;
     }
