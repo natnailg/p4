@@ -50,7 +50,7 @@ void funcC(node_t* node){
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     printf("\n %c -- %c \n", node->left->Label, node->center->Label);
-    funcL(node_t*);
+    funcL(node);
 }
 // if first A > second A, do H | do H F times
 void funcE(){}
