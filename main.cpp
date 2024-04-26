@@ -11,6 +11,7 @@
 #include "TreeNode.h"
 #include "testTree.h"
 #include "semantics.h"
+#include "Generation.h"
 
 int main(int argc, char* argv[]){
 
@@ -81,6 +82,9 @@ int main(int argc, char* argv[]){
 
 //    Symbol_Table_print(); //calling it to print the memory table.
     Static_semantic_print();
+    ///////////////////////////////////////////////////////////
+    funcS();
+    /////////////////////////////////////////////////////////
     // Free the memory allocated for the
     freeNode(root);
     return 0;

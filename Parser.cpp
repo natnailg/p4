@@ -77,7 +77,7 @@ node_t* parser(char* filename) {
 
 
     tokens = Scanner();
-    funcS(root); //calling it.
+
 
     root = S(); // call FUNCTION S
 
