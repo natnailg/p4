@@ -101,8 +101,8 @@ void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 void funcF(){}
 // assignment | read int and allocate memory | print value to screen
-void funcG(node_t* node){
-    printf("inside of G --- %C\n", node->left->Label);
+void funcG(node_t* Gnode){
+    printf("inside of G --- %C\n", Gnode->far_right->Label);
 
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
