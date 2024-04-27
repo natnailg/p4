@@ -80,7 +80,7 @@ int main(int argc, char* argv[]){
     pre_order_traversal(root, 0);
 
 //    Symbol_Table_print(); //calling it to print the memory table.
-//    Static_semantic_print();
+    Static_semantic_print();
     ///////////////////////////////////////////////////////////
     const char *file_path = "output.asm";
     open_file_global(file_path);

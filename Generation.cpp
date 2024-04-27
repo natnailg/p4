@@ -92,6 +92,7 @@ void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 void funcF(){}
 // assignment | read int and allocate memory | print value to screen
+// B | C | J
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->far_right->Label);
 
@@ -129,7 +130,6 @@ void funcH(node_t* node){
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
     if(node->left->Label == 'G'){
         printf("inside H called G BELOW\n");
-
         funcG(node->left);
         printf("inside H called G above\n");
     }
@@ -143,26 +143,34 @@ void funcH(node_t* node){
 
 
 // print integer value to screen (sum, int, or identifier)
+// *"A.
+// left -> *"
+// center -> A
+// right -> .
 void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
+    // *"A.
+    // left -> *"
+    if (node->left->Label == ' ') {
+        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
+//        funcL(node->left);
+    }
+    // center -> A
+    if (node->center->Label == 'A') {
+        printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
+//        funcL(node->center);
+    }
 
+    // right -> .
     if (node->right != NULL) {
         printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
 //        funcL(node->right);
     }
-    if (node->center->Label == 'A') {
-        printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-        funcL(node->center);
-    }
 
-    if (node->left != NULL) {
-        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
-        funcL(node->left);
-    }
     if (node->far_right != NULL) {
         printf("funcJ-  FR: %c -- %s \n", node->far_right->Label, node->far_right->token_instance);
-        funcL(node->far_right);
+//        funcL(node->far_right);
     }
 
 }
