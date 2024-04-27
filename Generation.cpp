@@ -112,7 +112,7 @@ void funcG(node_t* node){
         }
         if (node->far_right != NULL) {
             printf("FR -in G");
-            funcJ(node->center);
+            funcJ(node->far_right);
         }
         printf("inside G called j above\n");
     }
