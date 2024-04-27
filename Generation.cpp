@@ -92,8 +92,14 @@ void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 void funcF(){}
 // assignment | read int and allocate memory | print value to screen
-void funcG(node_t* Gnode){
-    printf("inside of G --- %C\n", Gnode->far_right->Label);
+void funcG(node_t* node){
+    printf("inside of G --- %C\n", node->far_right->Label);
+
+    if(node->left->Label == 'J'){
+        printf("inside G called j BELOW\n");
+        funcJ(node->left);
+        printf("inside G called j above\n");
+    }
 
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
@@ -122,6 +128,8 @@ void funcH(node_t* node){
 
 // print integer value to screen (sum, int, or identifier)
 void funcJ(node_t* node){
+    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
+
     if (node->left != NULL) {
         printf("funcJ: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcL(node->left);
