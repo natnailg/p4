@@ -18,7 +18,7 @@ void funcJ();
 void funcL(node_t*);
 void funcK();
 
-
+void Generation_code(node_t*);
 void open_file_global(const char *file_path);
 void close_file();
 

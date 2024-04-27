@@ -7,7 +7,23 @@
 
 #include "TreeNode.h"
 #include "Generation.h"
+/////////////////////////////
+//create a function for Generation_code
+void Generation_code(node_t* root){
+    if (root->Label == 'S'){
+        funcS(root);
 
+    }else{
+        printf("Root Node not met in generation_Code\n");
+    }
+
+}
+/////////////////////////////
+// create a function for temp varaiables.
+
+
+
+////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition
 // function to open the global files
 void open_file_global(const char *file_path) {
@@ -36,8 +52,9 @@ void funcS(node_t* root) {
 void funcA(){
 
 }
-// assigns the value of A to identifier t2
+// assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){
+
 
 }
 // read in int, allocate memory (e.g. v10 for %10), assign value = int

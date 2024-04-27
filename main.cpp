@@ -52,7 +52,6 @@ int main(int argc, char* argv[]){
         // read from the file
         Readin = argv[1];  //file we got from the command line
         filepointer = fopen(Readin, "r");
-        printf("-- file name passed -%s", Readin);
         if(filepointer == NULL){
             printf("Error opening the file\n");
             return EXIT_FAILURE;
@@ -83,10 +82,12 @@ int main(int argc, char* argv[]){
 //    Symbol_Table_print(); //calling it to print the memory table.
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
-    const char *file_path = "output_p4.txt";
+    const char *file_path = "output.asm", ;
     open_file_global(file_path);
 
-    funcS(root);
+    //calling the generation function with the root.
+    Generation_code(root);
+//    funcS(root);
 
     close_file();
     /////////////////////////////////////////////////////////
