@@ -11,12 +11,12 @@ void funcB(node_t*);
 void funcC(node_t*);
 void funcD(node_t*);
 void funcE();
-void funcF();
+char* funcF(node_t*);
 void funcG(node_t*);
 void funcH(node_t*);
 void funcJ(node_t*);
 void funcL(node_t*);
-void funcK();
+char* funcK(node_t*);
 
 char* Gen_temp_var();
 void Generation_code(node_t*);

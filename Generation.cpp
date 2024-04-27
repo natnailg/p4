@@ -84,9 +84,13 @@ void funcS(node_t* root) {
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
 // sum " int or identiguer
-//char* funcA(node_t* node){
-//
-//}
+char* funcA(node_t* node){
+    printf("\nEntering A called from J caaling F\n");
+    char* int_num = funcF(node->left);
+
+    return NULL;
+
+}
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
@@ -122,13 +126,18 @@ void funcD(node_t* node){
 // if first A > second A, do H | do H F times
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
-void funcF(){}
+char* funcF(node_t* node){
+    printf("\ninside of F called from A\n");
+
+    return NULL;
+
+}
 // assignment | read int and allocate memory | print value to screen
 // B | C | J
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->far_right->Label);
     if(node->far_right->Label == 'J'){
-        printf("inside G called j BELOW\n\n");
+        printf("\ninside G called j BELOW\n");
 
         if (node->left != NULL) {
             printf("L -in G\n");
@@ -190,7 +199,8 @@ void funcJ(node_t* node){
     // center -> A//
     if (node->center->Label == 'A') {
         printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-//        funcA(node->center); we need to get temp var.
+        funcA(node->center);
+
     }
 
     // right -> .
@@ -219,4 +229,4 @@ void funcL(node_t* node){
 
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
-void funcK(){}
+char* funcK(node_t*){}
