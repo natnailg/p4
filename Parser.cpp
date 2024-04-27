@@ -83,7 +83,7 @@ node_t* parser(char* filename) {
 
 
     if (tokens.tokenid == T2_tk){
-        tokens.tokeninstance[0] = V;
+        tokens.tokeninstance[0] = 'V';
 //
     }
 
