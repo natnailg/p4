@@ -14,7 +14,7 @@ void funcE();
 void funcF();
 void funcG(node_t*);
 void funcH(node_t*);
-void funcJ();
+void funcJ(node_t*);
 void funcL(node_t*);
 void funcK();
 

@@ -113,7 +113,7 @@ void funcH(node_t* node){
     }
     if(node->left->Label == 'E'){
         printf("inside H called E BELOW\n");
-        funcE(node->left);
+//        funcE(node->left);
         printf("inside H called E above\n");
     }
 
