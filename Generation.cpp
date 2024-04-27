@@ -91,6 +91,7 @@ void funcS(node_t* root) {
 void funcB(node_t* node){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
+// t2* (left->t2) (center-> *)
 void funcC(node_t* node) {
     if (node == NULL) {
         printf("Error: NULL node encountered in funcC\n");
@@ -103,11 +104,11 @@ void funcC(node_t* node) {
 
     }
     if(node->center != NULL) {
-        printf("funC--  %c  -- %s\n", node->center->token_id, node->center->token_instance);
+        printf("funC--  %c  -- %s\n\n", node->center->token_id, node->center->token_instance);
     }
 }
 //
-//D -> L (first set of D = , ,; . t2 *" ? epsilon
+//D -> L (first set of L = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     if (node == NULL) {
         printf("Error: NULL node encountered in funcD\n");
@@ -126,9 +127,8 @@ void funcF(){}
 // B | C | J
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->far_right->Label);
-
     if(node->far_right->Label == 'J'){
-        printf("inside G called j BELOW\n");
+        printf("inside G called j BELOW\n\n");
 
         if (node->left != NULL) {
             printf("L -in G\n");
@@ -153,7 +153,7 @@ void funcG(node_t* node){
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
     printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
-
+    //if left is empty out!
     if (strcmp(node->left->token_instance, "Empty") == 0){
         printf("E-L- This is empty!!\n");
         return;
@@ -162,7 +162,7 @@ void funcH(node_t* node){
     if(node->left->Label == 'G'){
         printf("inside H called G BELOW\n");
         funcG(node->left);
-        printf("inside H called G above\n");
+        printf("inside H called G above\n\n");
     }
     if(node->left->Label == 'E'){
         printf("inside H called E BELOW\n");
@@ -190,7 +190,7 @@ void funcJ(node_t* node){
     // center -> A
     if (node->center->Label == 'A') {
         printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-//        funcL(node->center);
+//        funcA(node->center); we need to get temp var.
     }
 
     // right -> .
@@ -209,7 +209,7 @@ void funcJ(node_t* node){
 void funcL(node_t* node){
     //if it is empty on the left.
     if (strcmp(node->left->token_instance, "Empty") == 0){
-        printf("E-L- This is empty!!\n");
+        printf("\nE-L- This is empty!!\n");
         return;
     }
     else{
