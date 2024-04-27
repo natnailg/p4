@@ -138,17 +138,18 @@ char* funcF(node_t* node){
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->right->Label);
 
-    if(node->left->Label == 'B') {
+    if(node->right->Label == 'J'){
+        printf("\ninside G called j BELOW\n");
+        funcJ(node->right);
+    }
+    else if(node->left->Label == 'B') {
         //call B (haven't go to b YET
 
     }
-    if(node->center->Label == 'C'){
+    else if(node->center->Label == 'C'){
         funcC(node->center);
     }
-    if(node->right->Label == 'J'){
-            printf("\ninside G called j BELOW\n");
-            funcJ(node->right);
-        }
+
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
