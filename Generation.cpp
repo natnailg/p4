@@ -116,6 +116,7 @@ void funcH(node_t* node){
     //calling node G, if the label is G
     if(node->left->Label == 'G'){
         funcG(node->left);
+        printf("inside H called G above\n");
     }
 //
 //    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
