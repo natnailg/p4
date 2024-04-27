@@ -190,7 +190,7 @@ void funcJ(node_t* node){
 
     }
     // right -> .
-    if (node->right == ' ') {//.
+    if (node->right->Label == ' ') {//.
         printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
 //        funcL(node->right);
     }
