@@ -9,7 +9,30 @@
 #include "Generation.h"
 ///////////////////////
 
+#define Max_temp_variables 20
+char* Temp_var_table[Max_temp_variables];
+int table_index = 0;
 
+char* Gen_temp_var(){
+    if (table_index >= Max_temp_variables) {
+        printf("Error: Max number of temp vars reached\n");
+        return 1;
+    }
+    // let's allocate memory for the temp variable
+    char* temp = (char*)malloc(sizeof(char) * 10);
+    if (temp == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    // we need to create new temp variable name (T0, T1, T2, ...)
+    snprintf(temp, 10, "T%d", table_index);
+
+    // atore the new temp var in the Temp_var_table
+    Temp_var_table[table_index] = temp;
+    table_index++;
+
+    return temp;
+}
 /////////////////////////////
 //create a function for Generation_code
 void Generation_code(node_t* root){
@@ -21,6 +44,7 @@ void Generation_code(node_t* root){
         printf("Root Node not met in generation_Code\n");
     }
 
+    fprintf(global_file_pointer, "STOP\n");
 }
 /////////////////////////////
 // create a function for temp varaiables.
@@ -53,7 +77,8 @@ void funcS(node_t* root) {
     funcD(root->center);
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
-void funcA(){
+// sum " int or identiguer
+char* funcA(node_t* node){
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr

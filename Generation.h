@@ -6,7 +6,7 @@
 #define P4_GENERATION_H
 
 void funcS(node_t*);
-void funcA();
+char* funcA(node_t*);
 void funcB(node_t*);
 void funcC(node_t*);
 void funcD(node_t*);
@@ -18,6 +18,7 @@ void funcJ(node_t*);
 void funcL(node_t*);
 void funcK();
 
+char* Gen_temp_var();
 void Generation_code(node_t*);
 void open_file_global(const char *file_path);
 void close_file();
