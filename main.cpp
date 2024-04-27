@@ -82,7 +82,7 @@ int main(int argc, char* argv[]){
 //    Symbol_Table_print(); //calling it to print the memory table.
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
-    const char *file_path = "output.asm", ;
+    const char *file_path = "output.asm";
     open_file_global(file_path);
 
     //calling the generation function with the root.
