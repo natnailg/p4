@@ -146,11 +146,12 @@ void funcH(node_t* node){
 void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
+
     if (node->right != NULL) {
         printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
-        funcL(node->right);
+//        funcL(node->right);
     }
-    if (node->center != NULL) {
+    if (node->center->Label == 'A') {
         printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
         funcL(node->center);
     }
