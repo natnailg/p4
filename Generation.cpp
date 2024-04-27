@@ -30,10 +30,10 @@ void close_file() {
 // create a function for temp varaiables.
 #define Max_temp_variables 20
 char* Temp_var_table[Max_temp_variables];
-int table_index = 0;
+int table_index_var = 0;
 
 char* Gen_temp_var(){
-    if (table_index >= Max_temp_variables) {
+    if (table_index_var >= Max_temp_variables) {
         printf("Error: Max number of temp vars reached\n");
         return NULL;
     }
@@ -44,11 +44,11 @@ char* Gen_temp_var(){
         return NULL;
     }
     // we need to create new temp variable name (T0, T1, T2, ...)
-    snprintf(temp, 10, "T%d", table_index);
+    snprintf(temp, 10, "T%d", table_index_var);
 
     // atore the new temp var in the Temp_var_table
-    Temp_var_table[table_index] = temp;
-    table_index++;
+    Temp_var_table[table_index_var] = temp;
+    table_index_var++;
 
     return temp;
 }
