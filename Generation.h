@@ -4,7 +4,7 @@
 
 #ifndef P4_GENERATION_H
 #define P4_GENERATION_H
-
+#include "token.h";
 void funcS(node_t*);
 char* funcA(node_t*);
 void funcB(node_t*);
