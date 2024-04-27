@@ -7,6 +7,7 @@
 
 #include "TreeNode.h"
 #include "Generation.h"
+#indclude "token.h"
 
 
 ////////////////////////////////
@@ -129,11 +130,29 @@ void funcD(node_t* node){
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
+    //t1
+    char* buffer;
+    if (node->left->tokenid == T1_tk){
 
+        //upper case positive
+        if (isalpha(node->left->token_instance[0])){
+            //copy/duplicate
+            return  strdup(node->left->token_instance[0] + 1);
+
+        }else{//lower case negative
+            buffer = (char*) malloc(strlen(node->left->token_instance));
+            sprintf(buffer, "-%s", node->left->token_instance)
+
+        }
+    }
+    //t2 identifier
+    else if(node->left->token_id == T2_tk){
+        return stdrup(node->left->token_instance);
+    }
     printf("\ninside of F called from A\n\n");
 
-    return NULL;
 }
+
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
@@ -215,16 +234,8 @@ void funcL(node_t* node){
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
-char* funcK(node_t* node, char* value){
-    printf("\ninside of K Called from A\n");
-    if(node->left->Label == 'F'){
-        printf("F from K If statment  %s \n", value);
-        return NULL;
-    }
-    else{// .
-        printf("F from K ELSE statment %s \n", value);
-        return NULL;
-    }
 
-    return NULL;
-}
+
+//reacource:
+//https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm
+// https://www.tutorialspoint.com/c_standard_library/c_function_fprintf.htm
