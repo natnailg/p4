@@ -76,9 +76,10 @@ void Generation_code(node_t* root){
 
 
 // read in int and allocate memory to, any number of additional operations
+// (right->C) (center->D)
 void funcS(node_t* root) {
-    fprintf(global_file_pointer, "Calling C and D in S\n");
-    printf("\nfuncS %c -- %c \n", root->left->Label, root->center->Label);
+//    fprintf(global_file_pointer, "Calling C and D in S\n");
+    printf("\nfuncS calling %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
     funcD(root->center);
 }
@@ -105,10 +106,10 @@ void funcC(node_t* node) {
     if (node->left != NULL) {
         //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
         fprintf(global_file_pointer, "READ %s\n", node->left->token_instance);
-        printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
+//        printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 
     }
-    if(node->center != NULL) {
+    if(node->center != NULL) { // *
         printf("funC--  %c  -- %s\n\n", node->center->token_id, node->center->token_instance);
     }
 }
@@ -120,7 +121,7 @@ void funcD(node_t* node){
         return;
     }
     if (node->left != NULL) {
-        printf("funcD: %c -- %s \n", node->left->Label, node->left->token_instance);
+        printf("funcD calling L: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcL(node->left);
     }
 }
@@ -131,35 +132,23 @@ char* funcF(node_t* node){
     printf("\ninside of F called from A\n\n");
 
     return NULL;
-
 }
 // assignment | read int and allocate memory | print value to screen
-// B | C | J
+// B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->far_right->Label);
-    if(node->far_right->Label == 'J'){
-        printf("\ninside G called j BELOW\n");
+    if(node->left->Label == 'B') {
+        //call B (haven't go to b YET
 
-        if (node->left != NULL) {
-            printf("L -in G\n");
-            funcJ(node->left);
-        }
-        if (node->right != NULL) {
-            printf("R -in G\n");
-            funcJ(node->right);
-        }
-        if (node->center != NULL) {
-            printf("C -in G\n");
-            funcJ(node->center);
-        }
-        if (node->far_right != NULL) {
-            printf("FR -in G\n");
+    }
+    if(node->center->Label == 'C'){
+        funcC(node->left);
+    }
+    if(node->far_right->Label == 'J'){
+            printf("\ninside G called j BELOW\n");
             funcJ(node->far_right);
         }
-        printf("inside G called j above\n");
     }
-
-}
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
     printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
@@ -184,10 +173,7 @@ void funcH(node_t* node){
 
 
 // print integer value to screen (sum, int, or identifier)
-// *"A.
-// left -> *"
-// center -> A
-// right -> .
+// *"A. (left -> *") (center -> A) (right -> .)
 void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
@@ -203,16 +189,10 @@ void funcJ(node_t* node){
         funcA(node->center);
 
     }
-
     // right -> .
-    if (node->right != NULL) {
+    if (node->right == ' ') {//.
         printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
 //        funcL(node->right);
-    }
-
-    if (node->far_right != NULL) {
-        printf("funcJ-  FR: %c -- %s \n", node->far_right->Label, node->far_right->token_instance);
-//        funcL(node->far_right);
     }
 
 }
@@ -237,7 +217,7 @@ char* funcK(node_t* node){
         printf("F from K If statment \n");
         return NULL;
     }
-    else{
+    else{// .
         printf("F from K ELSE statment \n");
         return NULL;
     }
