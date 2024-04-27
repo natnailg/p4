@@ -128,7 +128,7 @@ void funcH(node_t* node){
 
 // print integer value to screen (sum, int, or identifier)
 void funcJ(node_t* node){
-    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
+//    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
     if (node->left != NULL) {
         printf("funcJ: %c -- %s \n", node->left->Label, node->left->token_instance);
