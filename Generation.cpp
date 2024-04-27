@@ -56,10 +56,7 @@ void funcA(){
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
-void funcB(node_t* node){
-
-
-}
+void funcB(node_t* node){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
 void funcC(node_t* node) {
@@ -119,27 +116,25 @@ void funcH(node_t* node){
     if(node->left->Label == 'G'){
         funcG(node->left);
     }
-
-    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
-        printf("H This is empty!!\n");
-        return;
-    }
-    if (node->left != NULL) {
-        printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
-
-    }
-    if (node->center != NULL) {
-        printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
-    }
-    if (node->right != NULL) {
-        printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
-    } }
-
+//
+//    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
+//        printf("H This is empty!!\n");
+//        return;
+//    }
+//    if (node->left != NULL) {
+//        printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
+//    }
+//    if (node->center != NULL) {
+//        printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
+//    }
+//    if (node->right != NULL) {
+//        printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
+//    }
 }
+
+
 // print integer value to screen (sum, int, or identifier)
-void funcJ(){
-
-}
+void funcJ(){}
 // H ? D | Identifier
 void funcL(node_t* node){
     //if it is empty on the left.
