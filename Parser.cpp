@@ -81,6 +81,12 @@ node_t* parser(char* filename) {
 
     root = S(); // call FUNCTION S
 
+
+    if (tokens.tokenid == T2_tk){
+        tokens.tokeninstance[0] = V;
+//
+    }
+
     if(tokens.tokenid == EOFtk){
         printf("All Good OK!!\n");
     }else{
@@ -103,6 +109,7 @@ node_t* S(){
 
     P->left = C();
     P->center = D();
+
 
     // printf("1. End of S non-terminal\n");
     //printf("EXITING S()\n");

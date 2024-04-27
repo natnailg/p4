@@ -47,7 +47,7 @@ void funcC(node_t* node) {
     }
     if (node->left != NULL) {
         //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
-        fprintf(global_file_pointer, "READ %s", node->left->token_instance);
+        fprintf(global_file_pointer, "READ %s\n", node->left->token_instance);
         printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
 
     }
@@ -81,18 +81,21 @@ void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 void funcF(){}
 // assignment | read int and allocate memory | print value to screen
-void funcG(){}
-// if, for | assignment, read int and allocate memory, print value
+void funcG(){
+
+}
+// if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
 
     printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
 
-    if ((node->left->token_instance == "Empty") == 0){
+    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
         printf("H This is empty!!\n");
         return;
     }
     if (node->left != NULL) {
         printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
+
     }
 
     if (node->center != NULL) {
@@ -101,14 +104,13 @@ void funcH(node_t* node){
     if (node->right != NULL) {
         printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
     }
-
-
 }
 // print integer value to screen (sum, int, or identifier)
-void funcJ(){}
+void funcJ(){
+
+}
 // H ? D | Identifier
 void funcL(node_t* node){
-
 
     if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
         printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
