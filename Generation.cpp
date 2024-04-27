@@ -131,8 +131,8 @@ void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
     if (node->left != NULL) {
-        printf("funcJ: %c -- %s \n", node->left->Label, node->left->token_instance);
-        funcL(node->left);
+        printf("funcJ: %c -- %s \n", node->center->Label, node->left->token_instance);
+        funcL(node->center);
     }
 
 }
