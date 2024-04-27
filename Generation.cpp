@@ -216,7 +216,7 @@ void funcJ(node_t* node){
     }
 
 }
-// H ? D | Identifier
+// H ? D | Identifier (left -> H | empty) (center-> ?) (right -> L (recursive))
 void funcL(node_t* node){
     //if it is empty on the left.
     if (strcmp(node->left->token_instance, "Empty") == 0){
@@ -230,7 +230,17 @@ void funcL(node_t* node){
 
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
-char* funcK(node_t*){
+// (left-> F(Call F) | .) (center-> ?$)
+char* funcK(node_t* node){
     printf("\ninside of K Called from A\n");
+    if(node->left->Label == 'F'){
+        printf("F from K If statment \n");
+        return NULL;
+    }
+    else{
+        printf("F from K ELSE statment \n");
+        return NULL;
+    }
+
     return NULL;
 }
