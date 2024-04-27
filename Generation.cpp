@@ -95,9 +95,9 @@ void funcF(){}
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->far_right->Label);
 
-    if(node->left->Label == 'J'){
+    if(node->far_right->Label == 'J'){
         printf("inside G called j BELOW\n");
-        funcJ(node->center);
+        funcJ(node->left);
         printf("inside G called j above\n");
     }
 
