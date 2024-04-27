@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "TreeNode.h"
 #include "Generation.h"
@@ -131,16 +132,16 @@ void funcE(){}
 char* funcF(node_t* node){
     //t1
     char* buffer;
-    if (node->left->tokenid == T1_tk){
+    if (node->left->token_id == T1_tk){
 
         //upper case positive
         if (isalpha(node->left->token_instance[0])){
             //copy/duplicate
-            return  strdup(node->left->token_instance[0] + 1);
+            return strdup(node->left->token_instance + 1);
 
         }else{//lower case negative
             buffer = (char*) malloc(strlen(node->left->token_instance));
-            sprintf(buffer, "-%s", node->left->token_instance)
+            sprintf(buffer, "-%s", node->left->token_instance + 1)
 
         }
     }
