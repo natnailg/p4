@@ -83,11 +83,6 @@ node_t* parser(char* filename) {
 
 
 
-    if(tokens.tokenid == T2_tk){
-        printf("t2 foudn %s\n",tokens.tokeninstance);
-        tokens.tokeninstance[0] = 'V';
-//
-    }
 
     if(tokens.tokenid == EOFtk){
         printf("All Good OK!!\n");

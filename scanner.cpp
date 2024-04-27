@@ -46,6 +46,7 @@ int mapingchar(char c) {
         case '5': case '6': case '7': case '8': case '9':
             return DIGIT;
         case '%':
+
             return PERCENTAGE;
         case '.':
         case '!':
@@ -164,6 +165,9 @@ Token Scanner() {
                     return tokens;
                 case 1003:
                     tokens.tokenid = T2_tk;
+                    if(tokens.tokenid == T2_tk){
+                        tokens.tokeninstance[0] = 'V';
+                    }
                     //printf("token found: %s----%s--line: %d \n", tokenNames[tokens.tokenid], S, line_nums);
                     //break;
                     return tokens;
