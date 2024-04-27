@@ -84,9 +84,9 @@ void funcS(node_t* root) {
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
 // sum " int or identiguer
-char* funcA(node_t* node){
-
-}
+//char* funcA(node_t* node){
+//
+//}
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
