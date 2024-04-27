@@ -130,9 +130,10 @@ void funcD(node_t* node){
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
-    //t1
+
     char* buffer;
-    if (node->left->token_id == T1_tk){
+    //t1
+    if (node->left->token_ID == 1){
 
         //upper case positive
         if (isalpha(node->left->token_instance[0])){
@@ -141,13 +142,13 @@ char* funcF(node_t* node){
 
         }else{//lower case negative
             buffer = (char*) malloc(strlen(node->left->token_instance));
-            sprintf(buffer, "-%s", node->left->token_instance + 1)
+            sprintf(buffer, "-%s", node->left->token_instance + 1);
 
         }
     }
     //t2 identifier
-    else if(node->left->token_id == T2_tk){
-        return stdrup(node->left->token_instance);
+    else if(node->left->token_ID == 2){
+        return strdup(node->left->token_instance);
     }
     printf("\ninside of F called from A\n\n");
 
