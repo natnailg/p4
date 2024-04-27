@@ -12,7 +12,7 @@ void funcC(node_t*);
 void funcD(node_t*);
 void funcE();
 void funcF();
-void funcG();
+void funcG(node_t*);
 void funcH(node_t*);
 void funcJ();
 void funcL(node_t*);

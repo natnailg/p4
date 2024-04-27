@@ -7,6 +7,9 @@
 
 #include "TreeNode.h"
 #include "Generation.h"
+///////////////////////
+char
+
 /////////////////////////////
 //create a function for Generation_code
 void Generation_code(node_t* root){
@@ -100,13 +103,22 @@ void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 void funcF(){}
 // assignment | read int and allocate memory | print value to screen
-void funcG(){
+void funcG(node_t* node){
+    printf("inside of G --- %C\n", node->left->Label);
 
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
-
     printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
+
+    if (strcmp(node->left->token_instance, "Empty") == 0){
+        printf("E-L- This is empty!!\n");
+        return;
+    }
+    //calling node G, if the label is G
+    if(node->left->Label == 'G'){
+        funcG(node->left);
+    }
 
     if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
         printf("H This is empty!!\n");
@@ -116,13 +128,13 @@ void funcH(node_t* node){
         printf("\nfuncH: %c -- %s \n", node->left->Label, node->left->token_instance);
 
     }
-
     if (node->center != NULL) {
         printf("\nfuncH: %c -- %s \n", node->center->Label, node->center->token_instance);
     }
     if (node->right != NULL) {
         printf("\nfuncH: %c -- %s \n", node->right->Label, node->right->token_instance);
-    }
+    } }
+
 }
 // print integer value to screen (sum, int, or identifier)
 void funcJ(){
@@ -130,25 +142,32 @@ void funcJ(){
 }
 // H ? D | Identifier
 void funcL(node_t* node){
-
-    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
-        printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
-        funcH(node->left);
-    }
-
-    if (node->center != NULL) {
-        printf("\ncenter funcL: %c -- %s \n", node->center->Label, node->center->token_instance);
-    }
-
-    if (node->right != NULL) {
-        printf("\nright funcL: %c -- %s \n", node->right->Label, node->right->token_instance);
-        funcL( node->right);
-    }
-
-    if ((node->left->token_instance == "Empty") == 0){
+    //if it is empty on the left.
+    if (strcmp(node->left->token_instance, "Empty") == 0){
         printf("E-L- This is empty!!\n");
         return;
     }
+    else{
+        funcH(node->left);
+        funcL( node->right);
+    }
+
+
+//    if (node->left != NULL && strcmp(node->left->token_instance, "Empty") != 0) {
+//        printf("\nleft funcL: %c -- %s \n", node->left->Label, node->left->token_instance);
+//        funcH(node->left);
+//    }
+//
+//    if (node->center != NULL) {
+//        printf("\ncenter funcL: %c -- %s \n", node->center->Label, node->center->token_instance);
+//    }
+//
+//    if (node->right != NULL) {
+//        printf("\nright funcL: %c -- %s \n", node->right->Label, node->right->token_instance);
+//        funcL( node->right);
+//    }
+
+
 
     /*
      * if child is empty return
