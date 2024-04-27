@@ -222,7 +222,7 @@ char* funcK(node_t* node, char* value){
         return NULL;
     }
     else{// .
-        printf("F from K ELSE statment \n");
+        printf("F from K ELSE statment %s \n", value);
         return NULL;
     }
 
