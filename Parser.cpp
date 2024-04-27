@@ -307,13 +307,13 @@ node_t* G(){
     }
     else if (tokens.tokenid == T2_tk){
         //printf("2.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        P->right = C();
+        P->center = C();
         return P;
     }
     else if(tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"'){
         // printf("3.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-        P->far_right = J();
+        P->right = J();
         return P;
 
     }else{ printf("G1. ERROR\n");return NULL;}

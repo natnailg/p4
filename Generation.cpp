@@ -136,19 +136,20 @@ char* funcF(node_t* node){
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
-    printf("inside of G --- %C\n", node->far_right->Label);
+    printf("inside of G --- %C\n", node->right->Label);
+
     if(node->left->Label == 'B') {
         //call B (haven't go to b YET
 
     }
     if(node->center->Label == 'C'){
-        funcC(node->left);
+        funcC(node->center);
     }
-    if(node->far_right->Label == 'J'){
+    if(node->right->Label == 'J'){
             printf("\ninside G called j BELOW\n");
-            funcJ(node->far_right);
+            funcJ(node->right);
         }
-    }
+}
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
     printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
