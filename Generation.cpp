@@ -115,6 +115,8 @@ void funcH(node_t* node){
     }
     //calling node G, if the label is G
     if(node->left->Label == 'G'){
+        printf("inside H called G BELOW\n");
+
         funcG(node->left);
         printf("inside H called G above\n");
     }
