@@ -187,7 +187,7 @@ void funcJ(node_t* node){
         printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
 //        funcL(node->left);
     }
-    // center -> A
+    // center -> A//
     if (node->center->Label == 'A') {
         printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
 //        funcA(node->center); we need to get temp var.
