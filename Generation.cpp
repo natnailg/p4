@@ -87,6 +87,7 @@ void funcS(node_t* root) {
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* int_num = funcF(node->left);
+    char* int_num_2 = funcK(node->center);
 
     return NULL;
 
@@ -127,7 +128,7 @@ void funcD(node_t* node){
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
-    printf("\ninside of F called from A\n");
+    printf("\ninside of F called from A\n\n");
 
     return NULL;
 
@@ -229,4 +230,7 @@ void funcL(node_t* node){
 
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
-char* funcK(node_t*){}
+char* funcK(node_t*){
+    printf("\ninside of K Called from A\n");
+    return NULL;
+}
