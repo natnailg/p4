@@ -8,11 +8,12 @@
 #include "TreeNode.h"
 #include "Generation.h"
 ///////////////////////
-char
+
 
 /////////////////////////////
 //create a function for Generation_code
 void Generation_code(node_t* root){
+
     if (root->Label == 'S'){
         funcS(root);
 
