@@ -16,7 +16,7 @@ void funcG(node_t*);
 void funcH(node_t*);
 void funcJ(node_t*);
 void funcL(node_t*);
-char* funcK(node_t*);
+char* funcK(node_t*, char*);
 
 char* Gen_temp_var();
 void Generation_code(node_t*);

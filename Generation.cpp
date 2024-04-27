@@ -83,14 +83,14 @@ void funcS(node_t* root) {
     funcC(root->left);
     funcD(root->center);
 }
-// A->FK (we will just call those functions, First set of A = t1 t2)
+// A->FK (left->F)(center->K)
 // sum " int or identiguer
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
-    char* int_num = funcF(node->left);
-    char* int_num_2 = funcK(node->center);
+    char* value_1 = funcF(node->left);
+    char* value_2 = funcK(node->center,value_1);
 
-    return NULL;
+    return value_2; //return num
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
@@ -129,6 +129,7 @@ void funcD(node_t* node){
 void funcE(){}
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
+
     printf("\ninside of F called from A\n\n");
 
     return NULL;
@@ -175,10 +176,10 @@ void funcH(node_t* node){
 
 
 // print integer value to screen (sum, int, or identifier)
-// *"A. (left -> *") (center -> A) (right -> .)
+// *"A. (left -> *" (print value)) (center -> A) (right -> .)
 void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
-
+    //
     // *"A.
     // left -> *"
     if (node->left->Label == ' ') {
@@ -188,7 +189,8 @@ void funcJ(node_t* node){
     // center -> A//
     if (node->center->Label == 'A') {
         printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-        funcA(node->center);
+        char* value = funcA(node->center);
+        fprintf(global_file_pointer, "WRITE %s\n", value);
 
     }
     // right -> .
@@ -213,7 +215,7 @@ void funcL(node_t* node){
 }
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$)
-char* funcK(node_t* node){
+char* funcK(node_t* node, char* value){
     printf("\ninside of K Called from A\n");
     if(node->left->Label == 'F'){
         printf("F from K If statment \n");
