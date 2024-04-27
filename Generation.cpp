@@ -97,7 +97,17 @@ void funcG(node_t* node){
 
     if(node->far_right->Label == 'J'){
         printf("inside G called j BELOW\n");
-        funcJ(node->left);
+
+        if (node->left != NULL) {
+
+            funcJ(node->left);
+        }
+        if (node->right != NULL) {
+            funcJ(node->right);
+        }
+        if (node->center != NULL) {
+            funcJ(node->center);
+        }
         printf("inside G called j above\n");
     }
 
