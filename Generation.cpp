@@ -131,16 +131,16 @@ void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
 
     if (node->right != NULL) {
-        printf("funcJ: %c -- %s \n", node->right->Label, node->right->token_instance);
+        printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
         funcL(node->right);
     }
     if (node->center != NULL) {
-        printf("funcJ: %c -- %s \n", node->center->Label, node->center->token_instance);
+        printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
         funcL(node->center);
     }
 
     if (node->left != NULL) {
-        printf("funcJ: %c -- %s \n", node->left->Label, node->left->token_instance);
+        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcL(node->left);
     }
 
