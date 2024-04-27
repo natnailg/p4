@@ -11,7 +11,6 @@
 #include "BuildTree.h"
 #include "TreeNode.h"
 #include "Generation.h"
-#indclude "Parser.h"
 
 //Global vars
 char nextChar;  // we will use this to look for the next character
