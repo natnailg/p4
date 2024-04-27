@@ -99,19 +99,19 @@ void funcG(node_t* node){
         printf("inside G called j BELOW\n");
 
         if (node->left != NULL) {
-            printf("L -in G");
+            printf("L -in G\n");
             funcJ(node->left);
         }
         if (node->right != NULL) {
-            printf("R -in G");
+            printf("R -in G\n");
             funcJ(node->right);
         }
         if (node->center != NULL) {
-            printf("C -in G");
+            printf("C -in G\n");
             funcJ(node->center);
         }
         if (node->far_right != NULL) {
-            printf("FR -in G");
+            printf("FR -in G\n");
             funcJ(node->far_right);
         }
         printf("inside G called j above\n");
@@ -158,6 +158,10 @@ void funcJ(node_t* node){
     if (node->left != NULL) {
         printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
         funcL(node->left);
+    }
+    if (node->far_right != NULL) {
+        printf("funcJ-  FR: %c -- %s \n", node->far_right->Label, node->far_right->token_instance);
+        funcL(node->far_right);
     }
 
 }
