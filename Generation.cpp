@@ -99,13 +99,15 @@ void funcG(node_t* node){
         printf("inside G called j BELOW\n");
 
         if (node->left != NULL) {
-
+            printf("L -in G");
             funcJ(node->left);
         }
         if (node->right != NULL) {
+            printf("R -in G");
             funcJ(node->right);
         }
         if (node->center != NULL) {
+            printf("C -in G");
             funcJ(node->center);
         }
         printf("inside G called j above\n");
