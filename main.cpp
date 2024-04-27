@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
         // read from the file
         Readin = argv[1];  //file we got from the command line
         filepointer = fopen(Readin, "r");
-
+        printf("-- file name passed -%s", Readin);
         if(filepointer == NULL){
             printf("Error opening the file\n");
             return EXIT_FAILURE;

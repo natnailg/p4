@@ -132,9 +132,10 @@ node_t* B(){
         node_t* B_token_ptr = createNode(' '); //create an empty node
         //B_token_ptr -> token_id = tokens.tokenid;   //getting token id
         strncpy(B_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
-        P->center = B_token_ptr;
+//        P->center = B_token_ptr;
+        P->left = B_token_ptr;
 
-        tokens = Scanner(); //consume
+        tokens = Scanner(); //consume .
 
         if(tokens.tokenid == T2_tk){
 
@@ -300,7 +301,6 @@ node_t* G(){
 
     if (tokens.tokeninstance[0] == '.'){
         // printf("1.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-
         P->left = B();
 
         return P;

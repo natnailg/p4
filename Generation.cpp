@@ -33,7 +33,9 @@ void funcS(node_t* root) {
     funcD(root->center);
 }
 // A->FK (we will just call those functions, First set of A = t1 t2)
-void funcA(){}
+void funcA(){
+
+}
 // assigns the value of A to identifier t2
 void funcB(node_t* node){
 
