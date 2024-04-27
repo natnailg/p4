@@ -7,8 +7,27 @@
 
 #include "TreeNode.h"
 #include "Generation.h"
-///////////////////////
 
+
+////////////////////////////////
+FILE *global_file_pointer = NULL; // Global variable definition
+// function to open the global files
+void open_file_global(const char *file_path) {
+    global_file_pointer = fopen(file_path, "w"); // Open file in append mode
+    if (global_file_pointer == NULL) {
+        perror("Error opening file\n");
+    }
+}
+
+void close_file() {
+    if (global_file_pointer != NULL) {
+        fclose(global_file_pointer);
+        global_file_pointer = NULL;
+    }
+}
+
+///////////////////////
+// create a function for temp varaiables.
 #define Max_temp_variables 20
 char* Temp_var_table[Max_temp_variables];
 int table_index = 0;
@@ -16,13 +35,13 @@ int table_index = 0;
 char* Gen_temp_var(){
     if (table_index >= Max_temp_variables) {
         printf("Error: Max number of temp vars reached\n");
-        return 1;
+        return NULL;
     }
     // let's allocate memory for the temp variable
     char* temp = (char*)malloc(sizeof(char) * 10);
     if (temp == NULL) {
         printf("Memory allocation failed\n");
-        return 1;
+        return NULL;
     }
     // we need to create new temp variable name (T0, T1, T2, ...)
     snprintf(temp, 10, "T%d", table_index);
@@ -45,28 +64,15 @@ void Generation_code(node_t* root){
     }
 
     fprintf(global_file_pointer, "STOP\n");
+
+
+//    fprintf(global_file_pointer, "STOP\n");
 }
 /////////////////////////////
-// create a function for temp varaiables.
 
 
 
-////////////////////////////////
-FILE *global_file_pointer = NULL; // Global variable definition
-// function to open the global files
-void open_file_global(const char *file_path) {
-    global_file_pointer = fopen(file_path, "w"); // Open file in append mode
-    if (global_file_pointer == NULL) {
-        perror("Error opening file\n");
-    }
-}
 
-void close_file() {
-    if (global_file_pointer != NULL) {
-        fclose(global_file_pointer);
-        global_file_pointer = NULL;
-    }
-}
 
 
 // read in int and allocate memory to, any number of additional operations
