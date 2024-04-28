@@ -138,9 +138,11 @@ char* funcF(node_t* node){
         //upper case positive
         if (isalpha(node->left->token_instance[0])){
             //copy/duplicate
+            printf("\n\nin positive\n");
             return strdup(node->left->token_instance + 1);
 
         }else{//lower case negative
+            printf("\n\nin negative\n");
             buffer = (char*) malloc(strlen(node->left->token_instance));
             sprintf(buffer, "-%s", node->left->token_instance + 1);
 
