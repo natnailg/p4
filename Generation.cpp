@@ -244,13 +244,15 @@ char* funcK(node_t* node, char* value){
 
     printf("\ninside of K Called from A\n");
     if(node->left->Label == 'F'){
-        char* temp_val = Gen_temp_var();
-        printf("new temp val creatd %s\n", temp_val);
+
 
         printf("F from K If statment  %s \n", value);
         return NULL;
     }
     else{// .
+        char* temp_val = Gen_temp_var();
+        printf("new temp val creatd %s\n", temp_val);
+
         printf("F from K ELSE statment \n");
         printf("F from K ELSE statment %s \n", value);
         return NULL;
