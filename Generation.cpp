@@ -64,6 +64,27 @@ void Generation_code(node_t* root){
         printf("Root Node not met in generation_Code\n");
     }
 
+//    fprintf(global_file_pointer, "STOP\n");
+//
+//    // we also need to set the var read from the tree for %3242 or v23 to 0
+//    for (int i = 0; i < max_size_table; i++){
+//        if(table_array[i] != '\0'){
+//            fprintf(global_file_pointer,"%s 0\n", table_array[i]);
+//        }
+//
+//    }
+//    // i need to loop and assign 0 to the created variable
+//    for(int i = 0; i < Max_temp_variables; i++){
+//        if (Temp_var_table[i] != '\0') {
+//            fprintf(global_file_pointer,"%s 0\n", Temp_var_table[i]);
+//        }
+//    }
+
+//    fprintf(global_file_pointer, "STOP\n");
+}
+/////////////////////////////////////////
+//stop function
+void STOP_ASM(){
     fprintf(global_file_pointer, "STOP\n");
 
     // we also need to set the var read from the tree for %3242 or v23 to 0
@@ -79,21 +100,19 @@ void Generation_code(node_t* root){
             fprintf(global_file_pointer,"%s 0\n", Temp_var_table[i]);
         }
     }
-
-//    fprintf(global_file_pointer, "STOP\n");
 }
 /////////////////////////////
 
 // read in int and allocate memory to, any number of additional operations
 // (right->C) (center->D)
 void funcS(node_t* root) {
-//    fprintf(global_file_pointer, "Calling C and D in S\n");
     printf("\nfuncS calling %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
     funcD(root->center);
+    STOP_ASM();
 }
 // A->FK (left->F)(center->K)
-// sum " int or identiguer
+// sum " int or identiguer (given in class)
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
@@ -104,7 +123,12 @@ char* funcA(node_t* node){
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
-void funcB(node_t* node){}
+void funcB(node_t* node){
+    char* tempStr = funcA(node->right);
+    fprintf(global_file_pointer,"LOAD %s\n", tempStr);
+    fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20.
+
+}
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
 // t2* (left->t2) (center-> *)
@@ -114,10 +138,7 @@ void funcC(node_t* node) {
         return;
     }
     if (node->left != NULL) {
-        //  fprintf(global_file_pointer, "Read %s\n",nodeptr.child1(left in my case));
         fprintf(global_file_pointer, "READ %s\n", node->left->token_instance);
-//        printf("funC--  %c  -- %s\n", node->left->token_id, node->left->token_instance);
-
     }
     if(node->center != NULL) { // *
         printf("funC--  %c  -- %s\n\n", node->center->token_id, node->center->token_instance);
@@ -148,7 +169,7 @@ char* funcF(node_t* node){
         if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
             printf("\n\nin positive\n");
-            return strdup(node->left->token_instance + 1); // - the letter
+            return strdup(node->left->token_instance + 1); // - the letter (duplicates the number).
 
         }else{//lower case negative
             printf("\n\nin negative\n");
@@ -171,7 +192,6 @@ char* funcF(node_t* node){
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
     printf("inside of G --- %C\n", node->right->Label);
-
     if(node->right->Label == 'J'){
         printf("\ninside G called j BELOW\n");
         funcJ(node->right);
@@ -183,7 +203,6 @@ void funcG(node_t* node){
     else if(node->center->Label == 'C'){
         funcC(node->center);
     }
-
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
@@ -210,7 +229,6 @@ void funcH(node_t* node){
 // *"A. (left -> *" (print value)) (center -> A) (right -> .)
 void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
-    //
     // *"A.
     // left -> *"
     if (node->left->Label == ' ') {
@@ -247,6 +265,7 @@ void funcL(node_t* node){
 
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
+// value is nodeptr.child1 from A
 char* funcK(node_t* node, char* value){
 
     printf("\ninside of K Called from A\n");
@@ -257,11 +276,11 @@ char* funcK(node_t* node, char* value){
         return NULL;
     }
     else{// .
-
         char* temp_val = Gen_temp_var();
         printf("\n new temp val creatd %s\n", temp_val);
         printf("F from K ELSE statment %s \n", value);
-
+        //fprintf("LOAD %S \n", nodeptr.child1);
+        //(store T0\n)
         fprintf(global_file_pointer,"LOAD %s\n", value);
         fprintf(global_file_pointer, "STORE %s\n", temp_val);
 
