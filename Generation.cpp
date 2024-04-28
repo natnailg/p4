@@ -109,7 +109,7 @@ void funcS(node_t* root) {
     printf("\nfuncS calling %c -- %c \n", root->left->Label, root->center->Label);
     funcC(root->left);
     funcD(root->center);
-    STOP_ASM();
+    STOP_ASM(); //closing out
 }
 // A->FK (left->F)(center->K)
 // sum " int or identiguer (given in class)
@@ -196,12 +196,13 @@ void funcG(node_t* node){
         printf("\ninside G called j BELOW\n");
         funcJ(node->right);
     }
-    else if(node->left->Label == 'B') {
-        //call B (haven't go to b YET
-
-    }
     else if(node->center->Label == 'C'){
         funcC(node->center);
+    }
+    else if(node->left->Label == 'B') {
+        //call B (haven't go to b YET
+        printf("inside of G--- %c\n", node->left->Label);
+
     }
 }
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
