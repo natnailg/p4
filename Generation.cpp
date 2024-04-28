@@ -221,7 +221,7 @@ void funcG(node_t* node){
 //
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
 void funcH(node_t* node){
-    printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
+//    printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
     //if left is empty out!
     if (strcmp(node->left->token_instance, "Empty") == 0){
         printf("E-L- This is empty!!\n");
