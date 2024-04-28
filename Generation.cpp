@@ -202,7 +202,7 @@ void funcG(node_t* node){
             funcJ(node->left);
             break;
         case 'C':
-            prinf("Inside of G calling C\n");
+            printf("Inside of G calling C\n");
             funcC(node);
             break;
         default:
