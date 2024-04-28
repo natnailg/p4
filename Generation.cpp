@@ -191,7 +191,7 @@ char* funcF(node_t* node){
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
-    printf("inside of G --- %C\n", node->right->Label);
+//    printf("inside of G --- %C\n", node->right->Label);
     if(node->left->Label == 'B') {
         //call B (haven't go to b YET
         printf("inside of G--- %c\n", node->left->Label);
