@@ -112,7 +112,7 @@ void funcS(node_t* root) {
     STOP_ASM(); //closing out
 }
 // A->FK (left->F)(center->K)
-// sum " int or identiguer (given in class)
+// sum " int or identiguer (given in class) // we can just return and int in class lecture.
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
@@ -127,8 +127,8 @@ void funcB(node_t* node){
     char* tempStr = funcA(node->right);
     fprintf(global_file_pointer,"LOAD %s\n", tempStr);
     fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20.
-
 }
+
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
 //in class example for c is
 // t2* (left->t2) (center-> *)
@@ -158,9 +158,9 @@ void funcD(node_t* node){
 }
 // if first A > second A, do H | do H F times
 void funcE(){}
+
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
-
     char* buffer;
     //t1
     if (node->left->token_ID == 1){
@@ -179,7 +179,6 @@ char* funcF(node_t* node){
 
         }
     }
-
     //t2 identifier
     else if(node->left->token_ID == 2){
         return strdup(node->left->token_instance);
@@ -191,35 +190,27 @@ char* funcF(node_t* node){
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
-//    printf("inside of G --- %C\n", node->right->Label);
+
     if (node->left != NULL) {
-          if(node->left->Label == 'B') {
-             printf("inside of G--- calling B\n");
-            funcB(node->left);
-         }else if(node->left->Label == 'C'){
-             printf("inside of G--- calling C\n");
-             funcC(node->left);
-         }else if(node->left->Label == 'J'){
-             printf("inside of G--- calling J\n");
-             funcJ(node->left);
-         }
-    }else{
+        switch(node->left->Label) {
+            case 'B':
+                printf("inside of G--- calling B\n");
+                funcB(node->left);
+                break;
+            case 'C':
+                printf("inside of G--- calling C\n");
+                funcC(node->left);
+                break;
+            case 'J':
+                printf("inside of G--- calling J\n");
+                funcJ(node->left);
+                break;
+            default:
+                break;
+        }
+    } else {
         printf("node G is NULL\n");
     }
-
-//    if(node->left->Label == 'B') {
-//        //call B (haven't go to b YET
-//        printf("inside of G--- %c\n", node->left->Label);
-//        funcB(node->left);
-//
-//    }
-//    else if(node->right->Label == 'J'){
-//        printf("\ninside G called j BELOW\n");
-//        funcJ(node->right);
-//    }
-//    else if(node->center->Label == 'C'){
-//        funcC(node->center);
-//    }
 
 }
 //
@@ -238,7 +229,7 @@ void funcH(node_t* node){
     }
     if(node->left->Label == 'E'){
         printf("inside H called E BELOW\n");
-//        funcE(node->left);
+        funcE(node->left);
         printf("inside H called E above\n");
     }
 
@@ -286,14 +277,24 @@ void funcL(node_t* node){
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
 // value is nodeptr.child1 from A
+// if it is ff it is the sum (those two Fs)return that.
+// . if it is an identifier we need to find that identfier.
 char* funcK(node_t* node, char* value){
 
     printf("\ninside of K Called from A\n");
     if(node->left->Label == 'F'){
+        //we need to add
+        //call F
+        char* value_1 = funcF(node->left);
 
+        //need ne var
+        char* temp_val = Gen_temp_var();
+        fprintf(global_file_pointer,"LOAD %s\n", value);
+        fprintf(global_file_pointer,"ADD %s\n", value_1); //from F
+        fprintf(global_file_pointer,"STORE %S\n", temp_val);// in the newly var
 
         printf("F from K If statment  %s \n", value);
-        return NULL;
+        return temp_val; //return the two F sum
     }
     else{// .
         char* temp_val = Gen_temp_var();
