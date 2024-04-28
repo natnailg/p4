@@ -89,9 +89,9 @@ void funcS(node_t* root) {
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
-//    char* value_2 = funcK(node->center,value_1);
-     return value_1;
-//    return value_2; //return num
+    char* value_2 = funcK(node->center,value_1);
+
+     return value_2; //return num
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
@@ -233,9 +233,23 @@ void funcL(node_t* node){
     }
 
 }
+
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
+char* funcK(node_t* node, char* value){
+    printf("\ninside of K Called from A\n");
+    if(node->left->Label == 'F'){
+        printf("F from K If statment  %s \n", value);
+        return NULL;
+    }
+    else{// .
+        printf("F from K ELSE statment \n");
+        printf("F from K ELSE statment %s \n", value);
+        return NULL;
+    }
 
+    return NULL;
+}
 
 //reacource:
 //https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm
