@@ -229,6 +229,7 @@ void funcH(node_t* node){
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
     if(node->left->Label == 'G'){
+        printf("calling G from H\n");
         funcG(node->left);
     }
     if(node->left->Label == 'E'){
