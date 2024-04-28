@@ -291,7 +291,7 @@ char* funcK(node_t* node, char* value){
         char* temp_val = Gen_temp_var();
         fprintf(global_file_pointer,"LOAD %s\n", value);
         fprintf(global_file_pointer,"ADD %s\n", value_1); //from F
-        fprintf(global_file_pointer,"STORE %S\n", temp_val);// in the newly var
+        fprintf(global_file_pointer,"STORE %s\n", temp_val);// in the newly var
 
         printf("F from K If statment  %s \n", value);
         return temp_val; //return the two F sum
