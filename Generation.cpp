@@ -69,7 +69,7 @@ void Generation_code(node_t* root){
     // we also need to set the var read from the tree for %3242 or v23 to 0
     for (int i = 0; i < max_size_table; i++){
         if(table_array[i] != '\0'){
-            fprintf(global_file_pointer,"%s 0", table_array[i]);
+            fprintf(global_file_pointer,"%s 0\n", table_array[i]);
         }
 
     }
