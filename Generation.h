@@ -6,6 +6,7 @@
 #define P4_GENERATION_H
 #include "token.h"
 
+#include "semantics.h"
 
 void funcS(node_t*);
 char* funcA(node_t*);
