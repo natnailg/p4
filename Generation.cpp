@@ -192,15 +192,17 @@ char* funcF(node_t* node){
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
 //    printf("inside of G --- %C\n", node->right->Label);
-    if(node->left->Label == 'B'){
-        printf("inside of G--- calling B\n");
+    if (node->left != NULL) {
+          if(node->left->Label == 'B') {
+             printf("inside of G--- calling B\n");
 
-    }else if(node->center->Label == 'C'){
-        printf("inside of G--- calling C\n");
+         }else if(node->left->Label == 'C'){
+             printf("inside of G--- calling C\n");
 
-    }else if(node->right->Label == 'J'){
-        printf("inside of G--- calling J\n");
+         }else if(node->left->Label == 'J'){
+             printf("inside of G--- calling J\n");
 
+         }
     }
 
 //    if(node->left->Label == 'B') {
