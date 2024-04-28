@@ -6,11 +6,11 @@
 #define P3_SEMANTICS_H
 #include "TreeNode.h"
 
-const int max_size_table = 20;
-char* table_array[max_size_table];
-int table_index = 0;
-bool t2_found = false;
-bool  string_check = false;
+extern const int max_size_table = 20;
+extern char* table_array[max_size_table];
+extern int table_index = 0;
+extern bool t2_found = false;
+extern bool  string_check = false;
 
 
 void pre_order_traversal(node_t* root, int );
