@@ -84,11 +84,6 @@ void Generation_code(node_t* root){
 }
 /////////////////////////////
 
-
-
-
-
-
 // read in int and allocate memory to, any number of additional operations
 // (right->C) (center->D)
 void funcS(node_t* root) {
@@ -153,12 +148,12 @@ char* funcF(node_t* node){
         if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
             printf("\n\nin positive\n");
-            return strdup(node->left->token_instance + 1);
+            return strdup(node->left->token_instance + 1); // - the letter
 
         }else{//lower case negative
             printf("\n\nin negative\n");
             buffer = (char*) malloc(strlen(node->left->token_instance));
-            sprintf(buffer, "-%s", node->left->token_instance + 1);
+            sprintf(buffer, "-%s", node->left->token_instance + 1); //-minus the letter @ 0
             return buffer;
 
         }
