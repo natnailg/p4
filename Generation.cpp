@@ -67,7 +67,7 @@ void Generation_code(node_t* root){
     fprintf(global_file_pointer, "STOP\n");
 
     // we also need to set the var read from the tree for %3242 or v23 to 0
-    if (int i = 0; i < max_size_table; i++){
+    for (int i = 0; i < max_size_table; i++){
         if(table_array[i] != '\0'){
             printf("table elements %s\n", table_array[i]);
         }
