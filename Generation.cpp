@@ -136,7 +136,7 @@ char* funcF(node_t* node){
     if (node->left->token_ID == 1){
 
         //upper case positive
-        if (isalpha(node->left->token_instance[0])){
+        if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
             printf("\n\nin positive\n");
             return strdup(node->left->token_instance + 1);
