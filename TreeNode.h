@@ -6,7 +6,7 @@
 #define P3_TREENODE_H
 
 #include "BuildTree.h"
-#define MAX_INSTANCE_TOKEN 256
+#define MAX_INSTANCE_TOKENS 256
 
 typedef struct node_t{
 
@@ -15,7 +15,7 @@ typedef struct node_t{
     struct node_t* right; // pointer to the right
     struct node_t* center;
     struct node_t* far_right;
-    char token_instance[MAX_INSTANCE_TOKEN];  //printing token instance value
+    char token_instance[MAX_INSTANCE_TOKENS];  //printing token instance value
     char* token_id;
     int token_ID; // for the tree to be able to evaluate it in semantics.
 }node_t;
