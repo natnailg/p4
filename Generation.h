@@ -13,7 +13,7 @@ char* funcA(node_t*);
 void funcB(node_t*);
 void funcC(node_t*);
 void funcD(node_t*);
-void funcE();
+void funcE(node_t*);
 char* funcF(node_t*);
 void funcG(node_t*);
 void funcH(node_t*);

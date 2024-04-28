@@ -157,7 +157,7 @@ void funcD(node_t* node){
     }
 }
 // if first A > second A, do H | do H F times
-void funcE(){}
+void funcE(node_t* node){}
 
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
