@@ -8,7 +8,7 @@
 
 #include "TreeNode.h"
 #include "Generation.h"
-
+#include "semantics.h"
 
 ////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition

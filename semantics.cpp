@@ -9,12 +9,12 @@
 
 #include "semantics.h"
 #include "TreeNode.h"
-//
-//const int max_size_table = 20;
-//char* table_array[max_size_table];
-//int table_index = 0;
-//bool t2_found = false;
-//bool  string_check = false;
+
+const int max_size_table = 20;
+char* table_array[max_size_table];
+int table_index = 0;
+bool t2_found = false;
+bool  string_check = false;
 
 //steps
 // 1. lets first just travers it all ----------------- DONE.

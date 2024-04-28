@@ -6,9 +6,9 @@
 #define P3_SEMANTICS_H
 #include "TreeNode.h"
 
-extern const int max_size_table = 20;
-extern char* table_array[max_size_table];
-extern int table_index = 0;
+extern const int max_size_table;
+extern char* table_array[];
+extern int table_index;
 extern bool t2_found = false;
 extern bool  string_check = false;
 
