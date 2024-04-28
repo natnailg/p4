@@ -151,7 +151,7 @@ char* funcF(node_t* node){
         return strdup(node->left->token_instance);
     }
     printf("\ninside of F called from A\n\n");
-
+    return NULL;
 }
 
 // assignment | read int and allocate memory | print value to screen
