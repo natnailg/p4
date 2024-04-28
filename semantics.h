@@ -8,9 +8,9 @@
 
 extern const int max_size_table;
 extern char* table_array[];
-extern int table_index;
-extern bool t2_found = false;
-extern bool  string_check = false;
+int table_index;
+bool t2_found = false;
+bool  string_check = false;
 
 
 void pre_order_traversal(node_t* root, int );
