@@ -198,10 +198,10 @@ void funcG(node_t* node){
             funcB(node->left);
          }else if(node->left->Label == 'C'){
              printf("inside of G--- calling C\n");
-             funcC(node->center);
+             funcC(node->left);
          }else if(node->left->Label == 'J'){
              printf("inside of G--- calling J\n");
-             funcJ(node->right);
+             funcJ(node->left);
          }
     }else{
         printf("node G is NULL\n");
