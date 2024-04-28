@@ -148,6 +148,7 @@ char* funcF(node_t* node){
 
         }
     }
+
     //t2 identifier
     else if(node->left->token_ID == 2){
         return strdup(node->left->token_instance);
