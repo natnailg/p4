@@ -81,7 +81,7 @@ bool Table_check(node_t* identifier){
         if (result == 0) { // if in the table
             printf("Error: It is already declared in the table %s\n", table_array[i]);
 //            exit(EXIT_FAILURE);
-            return;
+            return true;
         }
     }
 
