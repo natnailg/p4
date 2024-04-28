@@ -66,6 +66,12 @@ void Generation_code(node_t* root){
 
     fprintf(global_file_pointer, "STOP\n");
 
+    // i need to loop and assign 0 to the created variable
+    for(int i = 0; i <){
+        if (Temp_var_table[i] != '\0') {
+            fprintf(global_file_pointer,"%s 0\n", Temp_var_table[i]);
+        }
+    }
 
 //    fprintf(global_file_pointer, "STOP\n");
 }
@@ -90,6 +96,7 @@ char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
     char* value_2 = funcK(node->center,value_1);
+    printf()
 
      return value_2; //return num
 
@@ -186,9 +193,7 @@ void funcH(node_t* node){
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
     if(node->left->Label == 'G'){
-        printf("inside H called G BELOW\n");
         funcG(node->left);
-        printf("inside H called G above\n\n");
     }
     if(node->left->Label == 'E'){
         printf("inside H called E BELOW\n");
