@@ -251,9 +251,7 @@ char* funcK(node_t* node, char* value){
     }
     else{// .
         char* temp_val = Gen_temp_var();
-        printf("new temp val creatd %s\n", temp_val);
-
-        printf("F from K ELSE statment \n");
+        printf("\n new temp val creatd %s\n", temp_val);
         printf("F from K ELSE statment %s \n", value);
         return NULL;
     }
