@@ -145,6 +145,7 @@ char* funcF(node_t* node){
             printf("\n\nin negative\n");
             buffer = (char*) malloc(strlen(node->left->token_instance));
             sprintf(buffer, "-%s", node->left->token_instance + 1);
+            return buffer;
 
         }
     }
@@ -240,6 +241,7 @@ void funcL(node_t* node){
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
 char* funcK(node_t* node, char* value){
+
     printf("\ninside of K Called from A\n");
     if(node->left->Label == 'F'){
         printf("F from K If statment  %s \n", value);
