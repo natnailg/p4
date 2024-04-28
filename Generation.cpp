@@ -286,7 +286,7 @@ char* funcK(node_t* node, char* value){
         //we need to add
         //call F
         char* value_1 = funcF(node->left);
-
+    //
         //need ne var
         char* temp_val = Gen_temp_var();
         fprintf(global_file_pointer,"LOAD %s\n", value);
