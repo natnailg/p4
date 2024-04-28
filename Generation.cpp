@@ -89,9 +89,9 @@ void funcS(node_t* root) {
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
-    char* value_2 = funcK(node->center,value_1);
-
-    return value_2; //return num
+//    char* value_2 = funcK(node->center,value_1);
+     return value_1;
+//    return value_2; //return num
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
