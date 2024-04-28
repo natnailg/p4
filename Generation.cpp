@@ -254,7 +254,11 @@ char* funcK(node_t* node, char* value){
         char* temp_val = Gen_temp_var();
         printf("\n new temp val creatd %s\n", temp_val);
         printf("F from K ELSE statment %s \n", value);
-        return NULL;
+
+        fprintf(global_file_pointer,"LOAD %s\n", value);
+        fprintf(global_file_pointer, "STORE %s\n", temp_val);
+
+        return temp_val;
     }
 
     return NULL;
