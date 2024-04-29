@@ -112,21 +112,25 @@ void funcS(node_t* root) {
     STOP_ASM(); //closing out
 }
 // A->FK (left->F)(center->K)
-// sum " int or identiguer (given in class) // we can just return and int in class lecture.
+// sum " int or identifier (given in class) // we can just return and int in class lecture.
+// it is going to look at the value and whatever the value it happens to be. It could be identifier or a direct number.
+// it could be two numbers that could be added together.
+// (so it has to check to see which one is in the program if it has just one child or three children.)
+// the first production will sum the values for the two. the second will return just a value.)
 char* funcA(node_t* node){
     printf("\nEntering A called from J caaling F\n");
     char* value_1 = funcF(node->left);
     char* value_2 = funcK(node->center,value_1);
     printf(" before returning %s", value_2);
 
-     return value_2; //return num
+     return value_2; //return temp t2 var
 
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){
     char* tempStr = funcA(node->right);
     fprintf(global_file_pointer,"LOAD %s\n", tempStr);
-    fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20.
+    fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20 (child two).
 }
 
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
@@ -156,9 +160,14 @@ void funcD(node_t* node){
         funcL(node->left);
     }
 }
-// if first A > second A, do H | do H F times
+// ,AAH | ,;FH
+// , if the firs operand is greater than the second operand. do the third operand
+// ,; for the first operand number of times do, do the second operand.
 void funcE(node_t* node){
-    //if A > A call H
+    // if A > A call H
+    printf("E called\n");
+    return;
+
 }
 
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
@@ -284,7 +293,7 @@ void funcL(node_t* node){
 char* funcK(node_t* node, char* value){
 
     printf("\ninside of K Called from A\n");
-    if(node->left->Label == 'F'){
+    if(node->left->Label == 'F'){//second F
         //we need to add
         //call F
         char* value_1 = funcF(node->left);
@@ -293,12 +302,12 @@ char* funcK(node_t* node, char* value){
         char* temp_val = Gen_temp_var();
         fprintf(global_file_pointer,"LOAD %s\n", value);
         fprintf(global_file_pointer,"ADD %s\n", value_1); //from F
-        fprintf(global_file_pointer,"STORE %s\n", temp_val);// in the newly var
+        fprintf(global_file_pointer,"STORE %s\n", temp_val);// store in the newly temp-var
 
-        printf("F from K If statment  %s \n", value);
+        printf("F from K If statement  %s \n", value);
         return temp_val; //return the two F sum
     }
-    else{// .
+    else{// . no sum just return the value.
         char* temp_val = Gen_temp_var();
         printf("\n new temp val creatd %s\n", temp_val);
         printf("F from K ELSE statment %s \n", value);
