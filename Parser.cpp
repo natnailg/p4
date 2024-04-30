@@ -328,7 +328,7 @@ node_t* H(){
     node_t* P = createNode('H'); //create node
 
 //    if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
-    if(tokens.tokeninstance[0] == ','){
+    if(tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] != ';' ){
 
         P -> left = E();
 
