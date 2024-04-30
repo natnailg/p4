@@ -165,7 +165,9 @@ void funcD(node_t* node){
 // ,; for the first operand number of times do, do the second operand.
 void funcE(node_t* node){
     // if A > A call H
-    printf("E called\n");
+    if(node->left != Null) {
+        printf("E called\n");
+    }
     return;
 
 }
@@ -234,16 +236,19 @@ void funcH(node_t* node){
         return;
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
-    if(node->left->Label == 'G'){
-        printf("calling G from H\n");
-        funcG(node->left);
+    if(node->left != NULL) {
+        if(node->left->Label == 'G'){
+            printf("calling G from H\n");
+            funcG(node->left);
+        }
     }
-    if(node->left->Label == 'E'){
-        printf("inside H called E BELOW\n");
-        funcE(node->left);
-        printf("inside H called E above\n");
+    if(node->left != NULL) {
+        if (node->left->Label == 'E') {
+            printf("inside H called E BELOW\n");
+            funcE(node->left);
+            printf("inside H called E above\n");
+        }
     }
-
 }
 
 
@@ -258,12 +263,14 @@ void funcJ(node_t* node){
 //        funcL(node->left);
     }
     // center -> A//
-    if (node->center->Label == 'A') {
-        printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-        char* value = funcA(node->center);
-        fprintf(global_file_pointer, "WRITE %s\n", value);
+    if(node->left != NULL) {
+        if (node->center->Label == 'A') {
+            printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
+            char *value = funcA(node->center);
+            fprintf(global_file_pointer, "WRITE %s\n", value);
 
-    }
+        }
+    }else{printf("ERROR in J in Generation.cpp\n");}
     // right -> .
     if (node->right->Label == ' ') {//.
         printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);

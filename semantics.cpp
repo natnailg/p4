@@ -24,7 +24,7 @@ bool  string_check = false;
 void pre_order_traversal(node_t* root, int depth) {
     if (root == NULL) { return; }
 
-    if (root->Label == ' ') { // this is how i had printed my decoration with empty node
+    if (root->Label == ' ') { // this is how I had printed my decoration with empty node
         //printf("%*c %s, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
 
         // we need to see if we encounter t1 and t2 toknes in the tree
@@ -81,7 +81,7 @@ bool Table_check(node_t* identifier){
         if (result == 0) { // if in the table
 //            printf("Error: It is already declared in the table %s\n", table_array[i]);
 //            exit(EXIT_FAILURE);
-            return true;
+            return;
         }
     }
 
