@@ -67,8 +67,8 @@ void Generation_code(node_t* root){
 /////////////////////////////////////////
 //stop function
 void STOP_ASM(){
-    fprintf(global_file_pointer, "STOP\n");
 
+    fprintf(global_file_pointer, "STOP\n");
     // we also need to set the var read from the tree for %3242 or v23 to 0
     for (int i = 0; i < max_size_table; i++){
         if(table_array[i] != '\0'){
@@ -139,7 +139,7 @@ void funcD(node_t* node){
 }
 // ,AAH | ,;FH
 // , if the firs operand is greater than the second operand. do the third operand
-// ,; for the first operand number of times do, do the second operand.
+// ,; for the first operand number of times do, do the second operand. (while loop??)
 void funcE(node_t* node){
     // if A > A call H
     if(node->left != NULL) {
@@ -149,12 +149,35 @@ void funcE(node_t* node){
 //        P-> center = A();
 //        P-> right = A();
 //        P-> far_right = H();
-        if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
+        if(node->left->token_instance[0] == ',' && node->left->token_instance[1] != ';'){
+            //AAH
+            char* value1 = funcA(node->center);
+            char* value2 = funcA(node->right);
+//            if A > A do H  (4 - 3) = 1 do H(call H)
+//            if A < A break (3 - 4) = -1 break  && (4-4) = 0 break
+//            LOAD value1
+//            SUB value2
+//            BRZNEG out1
+//            call H
+//            out1 : NOOP
+//            stop
+//            value2 0
+//            value1 0
+            fprintf(global_file_pointer, "LOAD %s\n", value1);
+            fprintf(global_file_pointer, "SUB %s\n", value2);
+            fprintf(global_file_pointer, "BRZNEG: out1\n");
+            funcH(node->left);
+            fprintf(global_file_pointer, "out1: NOOP\n");
+
+        }
+        else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
             //we call F that get either an int or identifier.
 
             char* value = funcF(node->center);
             // since F give me an int or Identifier we need to load that in
-            fprintf(global_file_pointer, "LOAD %s", value);
+            fprintf(global_file_pointer, "LOAD %s\n", value);
+            //do H F times
+
 
             printf("E called (F called above!) %s\n", value);
             funcH(node->right);
@@ -232,7 +255,7 @@ void funcH(node_t* node){
         return;
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
-    if(node->left != NULL) {
+    else if(node->left != NULL) {
         switch (node->left->Label) {
             case 'G':
                 printf("calling G from H\n");
@@ -247,19 +270,6 @@ void funcH(node_t* node){
                 break;
         }
     }
-//    if(node->left != NULL) {
-//        if(node->left->Label == 'G'){
-//            printf("calling G from H\n");
-//            funcG(node->left);
-//        }
-//    }
-//    if(node->left != NULL) {
-//        if (node->left->Label == 'E') {
-//            printf("inside H called E BELOW\n");
-//            funcE(node->left);
-//            printf("inside H called E above\n");
-//        }
-//    }
 }
 
 
@@ -277,25 +287,6 @@ void funcJ(node_t* node){
 
         }
     }else{printf("ERROR in J in Generation.cpp\n");}
-
-//    if (node->left->Label == ' ') {
-//        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
-////        funcL(node->left);
-//    }
-//    // center -> A//
-//    if(node->left != NULL) {
-//        if (node->center->Label == 'A') {
-//            printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
-//            char *value = funcA(node->center);
-//            fprintf(global_file_pointer, "WRITE %s\n", value);
-//
-//        }
-//    }else{printf("ERROR in J in Generation.cpp\n");}
-//    // right -> .
-//    if (node->right->Label == ' ') {//.
-//        printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
-////        funcL(node->right);
-//    }
 
 }
 // H ? D | Identifier (left -> H | empty) (center-> ?) (right -> L (recursive))
