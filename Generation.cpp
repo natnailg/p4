@@ -156,10 +156,13 @@ void funcE(node_t* node){
 //        P-> far_right = H();
         if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
             //we call F that get either an int or identifier.
-            printf("E called (F called below!)\n");
 
             char* value = funcF(node->center);
             printf("E called (F called above!) %s\n", value);
+            char* value2 = funcH(node->left);
+            printf("E called (H called above!) %s\n", value2);
+
+
         }
     }
     return;
