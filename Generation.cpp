@@ -100,13 +100,11 @@ void funcS(node_t* root) {
 // (so it has to check to see which one is in the program if it has just one child or three children.)
 // the first production will sum the values for the two. the second will return just a value.)
 char* funcA(node_t* node){
-    printf("\nEntering A called from J caaling F\n");
+    printf("\nEntering A called from J calling F\n");
     char* value_1 = funcF(node->left);
     char* value_2 = funcK(node->center,value_1);
-    printf(" before returning %s", value_2);
 
      return value_2; //return temp t2 var
-
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){
@@ -119,6 +117,7 @@ void funcB(node_t* node){
 //in class example for c is
 // t2* (left->t2) (center-> *)
 void funcC(node_t* node) {
+    printf("func C %c --- %s", node->left->Label, node->center->token_id);
     if (node == NULL) {
         printf("Error: NULL node encountered in funcC\n");
         return;
@@ -126,11 +125,7 @@ void funcC(node_t* node) {
     if (node->left != NULL) {
         fprintf(global_file_pointer, "READ %s\n", node->left->token_instance);
     }
-    if(node->center != NULL) { // *
-        printf("funC--  %c  -- %s\n\n", node->center->token_id, node->center->token_instance);
-    }
 }
-//
 //D -> L (first set of L = , ,; . t2 *" ? epsilon
 void funcD(node_t* node){
     if (node == NULL) {
@@ -178,11 +173,11 @@ char* funcF(node_t* node){
         //upper case positive
         if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
-            printf("\n\nin positive\n");
+            printf("\nin positive\n");
             return strdup(node->left->token_instance + 1); // - the letter (duplicates the number).
 
         }else{//lower case negative
-            printf("\n\nin negative\n");
+            printf("\nin negative\n");
             buffer = (char*) malloc(strlen(node->left->token_instance));
             sprintf(buffer, "-%s", node->left->token_instance + 1); //-minus the letter @ 0
             return buffer;
@@ -245,10 +240,6 @@ void funcH(node_t* node){
                 funcE(node->left);
                 printf("inside H called E above\n");
                 break;
-            case 'J':
-                printf("inside of G--- calling J\n");
-                funcJ(node->left);
-                break;
             default:
                 break;
         }
@@ -275,12 +266,7 @@ void funcJ(node_t* node){
 //    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
     // *"A.
     // left -> *"
-    if (node->left->Label == ' ') {
-        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
-//        funcL(node->left);
-    }
-    // center -> A//
-    if(node->left != NULL) {
+    if(node->left != NULL){
         if (node->center->Label == 'A') {
             printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
             char *value = funcA(node->center);
@@ -288,11 +274,25 @@ void funcJ(node_t* node){
 
         }
     }else{printf("ERROR in J in Generation.cpp\n");}
-    // right -> .
-    if (node->right->Label == ' ') {//.
-        printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
-//        funcL(node->right);
-    }
+
+//    if (node->left->Label == ' ') {
+//        printf("funcJ-  L: %c -- %s \n", node->left->Label, node->left->token_instance);
+////        funcL(node->left);
+//    }
+//    // center -> A//
+//    if(node->left != NULL) {
+//        if (node->center->Label == 'A') {
+//            printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
+//            char *value = funcA(node->center);
+//            fprintf(global_file_pointer, "WRITE %s\n", value);
+//
+//        }
+//    }else{printf("ERROR in J in Generation.cpp\n");}
+//    // right -> .
+//    if (node->right->Label == ' ') {//.
+//        printf("funcJ - R: %c -- %s \n", node->right->Label, node->right->token_instance);
+////        funcL(node->right);
+//    }
 
 }
 // H ? D | Identifier (left -> H | empty) (center-> ?) (right -> L (recursive))
@@ -303,6 +303,7 @@ void funcL(node_t* node){
         return;
     }
     else{
+        printf("Calling H and L IN L\n");
         funcH(node->left);
         funcL( node->right);
     }
