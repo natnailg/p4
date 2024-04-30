@@ -254,9 +254,11 @@ node_t* E(){
         P-> left = E_tk_ptr_2;
 
         tokens = Scanner(); //consume
-
-        P->left = F();
-        P->center = H();
+//
+//        P->left = F();
+//        P->center = H();
+        P->center = F();
+        P->right = H();
 
         return P;
 
