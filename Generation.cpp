@@ -159,7 +159,7 @@ void funcE(node_t* node){
 
             char* value = funcF(node->center);
             printf("E called (F called above!) %s\n", value);
-            char* value2 = funcH(node->right);
+            funcH(node->right);
             printf("E called (H called above!) %s\n", value2);
 
 
@@ -172,7 +172,7 @@ void funcE(node_t* node){
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
     char* buffer;
-    //t1
+    //t1 int
     if (node->left->token_ID == 1){
 
         //upper case positive
