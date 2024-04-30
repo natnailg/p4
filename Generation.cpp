@@ -158,7 +158,7 @@ void funcE(node_t* node){
             //we call F that get either an int or identifier.
             printf("E called (F called below!)\n");
 
-            char* value = funcF(node->left);
+            char* value = funcF(node->center);
             printf("E called (F called above!) %s\n", value);
         }
     }
