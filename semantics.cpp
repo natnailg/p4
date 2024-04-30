@@ -42,11 +42,11 @@ void pre_order_traversal(node_t* root, int depth) {
                 input_into_memory(root);
                 t2_found = true;
 
-            }//else{
-////                printf("Error: It is not declared in the table %s\n", root->token_instance);
-////                exit(EXIT_FAILURE);
-//                 return;
-//            }
+            }else{
+//                printf("Error: It is not declared in the table %s\n", root->token_instance);
+//                exit(EXIT_FAILURE);
+                 return;
+            }
 
         }
     }
@@ -81,7 +81,7 @@ bool Table_check(node_t* identifier){
         if (result == 0) { // if in the table
 //            printf("Error: It is already declared in the table %s\n", table_array[i]);
 //            exit(EXIT_FAILURE);
-            return;
+            break;
         }
     }
 
