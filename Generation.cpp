@@ -187,7 +187,7 @@ void funcE(node_t* node){
             char* value = funcF(node->center);
             //we then load that
             fprintf(global_file_pointer, "LOAD %s\n", value);
-            fprintf(global_file_pointer, "Loop: %s\n", vlaue);
+            fprintf(global_file_pointer, "Loop: %s\n", value);
 //            fprintf(global_file_pointer, "")
 
 //            // since F give me an int or Identifier we need to load that in
