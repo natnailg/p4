@@ -230,7 +230,7 @@ node_t* D(){
 node_t* E(){
     node_t* P = createNode('E'); //create node E
 
-    if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] != ';'){
+    if (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] != ';'){
 
         node_t* E_tk_ptr = createNode(' ');
         E_tk_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
@@ -245,7 +245,7 @@ node_t* E(){
 
         return P;
     }
-    else if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] == ';'){
+    else if (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';'){
 
         node_t* E_tk_ptr_2 = createNode(' ');
         E_tk_ptr_2 -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
@@ -327,8 +327,8 @@ node_t* H(){
 
     node_t* P = createNode('H'); //create node
 
-//    if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
-    if(tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] != ';' ){
+    if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
+
 
         P -> left = E();
 
