@@ -100,7 +100,7 @@ void funcS(node_t* root) {
 // (so it has to check to see which one is in the program if it has just one child or three children.)
 // the first production will sum the values for the two. the second will return just a value.)
 char* funcA(node_t* node){
-    printf("\nEntering A called from J calling F\n");
+    printf("\nEntering A\n");
     char* value_1 = funcF(node->left);
     char* value_2 = funcK(node->center,value_1);
 
@@ -108,6 +108,7 @@ char* funcA(node_t* node){
 }
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
 void funcB(node_t* node){
+    printf("\nEntering B \n");
     char* tempStr = funcA(node->right);
     fprintf(global_file_pointer,"LOAD %s\n", tempStr);
     fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20 (child two).
@@ -143,6 +144,7 @@ void funcD(node_t* node){
 void funcE(node_t* node){
     // if A > A call H
     if(node->left != NULL) {
+        printf("\nEntering E\n");
 
 //        P-> left = E_tk_ptr; //,;
 //        tokens = Scanner(); //consume
@@ -170,28 +172,28 @@ void funcE(node_t* node){
             fprintf(global_file_pointer, "out1: NOOP\n");
 
         }
-        else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
-            //we call F that get either an int or identifier.
-
-            char* value = funcF(node->center);
-            // since F give me an int or Identifier we need to load that in
-            fprintf(global_file_pointer, "LOAD %s\n", value);
-            //do H F times
-
-
-            printf("E called (F called above!) %s\n", value);
-            funcH(node->right);
-            printf("E called (H called above!)\n");
-
-
-        }
+//        else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
+//            //we call F that get either an int or identifier.
+//
+//            char* value = funcF(node->center);
+//            // since F give me an int or Identifier we need to load that in
+//            fprintf(global_file_pointer, "LOAD %s\n", value);
+//            //do H F times
+//
+//
+//            printf("E called (F called above!) %s\n", value);
+//            funcH(node->right);
+//            printf("E called (H called above!)\n");
+//
+//
+//        }
     }
-    return;
-
 }
 
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
 char* funcF(node_t* node){
+    printf("\nEntering F\n");
+
     char* buffer;
     //t1 int
     if (node->left->token_ID == 1){
@@ -222,6 +224,7 @@ char* funcF(node_t* node){
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
 void funcG(node_t* node){
+    printf("\nEntering G\n");
 
     if (node->left != NULL) {
         switch(node->left->Label) {
@@ -250,6 +253,8 @@ void funcG(node_t* node){
 void funcH(node_t* node){
 //    printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
     //if left is empty out!
+    printf("\nEntering H\n");
+
     if (strcmp(node->left->token_instance, "Empty") == 0){
         printf("E-L- This is empty!!\n");
         return;
@@ -326,7 +331,7 @@ char* funcK(node_t* node, char* value){
         printf("F from K If statement  %s \n", value);
         return temp_val; //return the two F sum
     }
-    else{// . no sum just return the value.
+    else if(node->left->token_instance[0] == '.'){// . no sum just return the value.
         char* temp_val = Gen_temp_var();
         printf("\n new temp val creatd %s\n", temp_val);
         printf("F from K ELSE statment %s \n", value);
