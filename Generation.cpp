@@ -158,7 +158,7 @@ void funcE(node_t* node){
             //we call F that get either an int or identifier.
             printf("E called (F called below!)\n");
 
-            char* value = funcF(node ->left);
+            char* value = funcF(node->left);
             printf("E called (F called above!) %s\n", value);
         }
     }
@@ -188,6 +188,7 @@ char* funcF(node_t* node){
     }
     //t2 identifier
     else if(node->left->token_ID == 2){
+        printf("inside of F T2\n");
         return strdup(node->left->token_instance);
     }
     printf("\ninside of F called from A\n\n");
