@@ -165,7 +165,7 @@ void funcD(node_t* node){
 // ,; for the first operand number of times do, do the second operand.
 void funcE(node_t* node){
     // if A > A call H
-    if(node->left != Null) {
+    if(node->left != NULL) {
         printf("E called\n");
     }
     return;
