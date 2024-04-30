@@ -159,7 +159,7 @@ void funcE(node_t* node){
 
             char* value = funcF(node->center);
             printf("E called (F called above!) %s\n", value);
-            char* value2 = funcH(node->left);
+            char* value2 = funcH(node->right);
             printf("E called (H called above!) %s\n", value2);
 
 
