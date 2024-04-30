@@ -235,18 +235,37 @@ void funcH(node_t* node){
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
     if(node->left != NULL) {
-        if(node->left->Label == 'G'){
-            printf("calling G from H\n");
-            funcG(node->left);
+        switch (node->left->Label) {
+            case 'G':
+                printf("calling G from H\n");
+                funcG(node->left);
+                break;
+            case 'E':
+                printf("inside H called E BELOW\n");
+                funcE(node->left);
+                printf("inside H called E above\n");
+                break;
+            case 'J':
+                printf("inside of G--- calling J\n");
+                funcJ(node->left);
+                break;
+            default:
+                break;
         }
     }
-    if(node->left != NULL) {
-        if (node->left->Label == 'E') {
-            printf("inside H called E BELOW\n");
-            funcE(node->left);
-            printf("inside H called E above\n");
-        }
-    }
+//    if(node->left != NULL) {
+//        if(node->left->Label == 'G'){
+//            printf("calling G from H\n");
+//            funcG(node->left);
+//        }
+//    }
+//    if(node->left != NULL) {
+//        if (node->left->Label == 'E') {
+//            printf("inside H called E BELOW\n");
+//            funcE(node->left);
+//            printf("inside H called E above\n");
+//        }
+//    }
 }
 
 
