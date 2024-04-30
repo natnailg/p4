@@ -101,21 +101,23 @@ void funcS(node_t* root) {
 // the first production will sum the values for the two. the second will return just a value.)
 char* funcA(node_t* node){
     printf("\nEntering A\n");
-    char* value_1 = funcF(node->left);
-    char* value_2 = funcK(node->center,value_1);
+    char* value1 = funcF(node->left);
+    char* value2 = funcK(node->center,value1);
 
-     return value_2; //return temp t2 var
+     return value2; //return temp t2 var
 }
+/////////////////////////////////////////////////////////////////////////////////////////
 // assigns the value of A to identifier t2 (load and store in to accumulator) need tempstr
+// just assigns what ever is returner from A to t2
 void funcB(node_t* node){
     printf("\nEntering B \n");
-    char* tempStr = funcA(node->right);
+    char* tempStr = funcA(node->right); //A(is the third)
     fprintf(global_file_pointer,"LOAD %s\n", tempStr);
     fprintf(global_file_pointer,"STORE %s\n", node->center->token_instance); //we need the V20 (child two).
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
 // read in int, allocate memory (e.g. v10 for %10), assign value = int
-//in class example for c is
+//in class example for c is (sole responsible for reading and storing)
 // t2* (left->t2) (center-> *)
 void funcC(node_t* node) {
     printf("func C %c --- %s", node->left->Label, node->center->token_id);
@@ -127,7 +129,9 @@ void funcC(node_t* node) {
         fprintf(global_file_pointer, "READ %s\n", node->left->token_instance);
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////
 //D -> L (first set of L = , ,; . t2 *" ? epsilon
+//(responsible for call L )
 void funcD(node_t* node){
     if (node == NULL) {
         printf("Error: NULL node encountered in funcD\n");
@@ -138,10 +142,15 @@ void funcD(node_t* node){
         funcL(node->left);
     }
 }
+////////////////////////////////////////////////////////////////////////////////////////////
 // ,AAH | ,;FH
 // , if the firs operand is greater than the second operand. do the third operand
 // ,; for the first operand number of times do, do the second operand. (while loop??)
 void funcE(node_t* node){
+    if(node->left == NULL){
+        printf("Error in funcE left node Null\n");
+        return;
+    }
     // if A > A call H
     if(node->left != NULL) {
         printf("\nEntering E\n");
@@ -172,10 +181,15 @@ void funcE(node_t* node){
             fprintf(global_file_pointer, "out1: NOOP\n");
 
         }
-//        else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
+        else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
 //            //we call F that get either an int or identifier.
 //
-//            char* value = funcF(node->center);
+            char* value = funcF(node->center);
+            //we then load that
+            fprintf(global_file_pointer, "LOAD %s\n", value);
+            fprintf(global_file_pointer, "Loop: %s\n", vlaue);
+            fprintf(global_file_pointer, "")
+
 //            // since F give me an int or Identifier we need to load that in
 //            fprintf(global_file_pointer, "LOAD %s\n", value);
 //            //do H F times
@@ -186,26 +200,25 @@ void funcE(node_t* node){
 //            printf("E called (H called above!)\n");
 //
 //
-//        }
+        }
     }
 }
-
+////////////////////////////////////////////////////////////////////////////////////////
 // number | identifier // F-> t1 | t2 (first set of F = t1 | t2)//
+// get either int or identifier
 char* funcF(node_t* node){
     printf("\nEntering F\n");
-
-    char* buffer;
+    char* buffer; //string
     //t1 int
     if (node->left->token_ID == 1){
-
         //upper case positive
         if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
-            printf("\nin positive\n");
-            return strdup(node->left->token_instance + 1); // - the letter (duplicates the number).
+            printf("in positive\n");
+            return strdup(node->left->token_instance + 1); // - the letter (duplicates from index (1)->). duplicates starting from
 
         }else{//lower case negative
-            printf("\nin negative\n");
+            printf("in negative\n");
             buffer = (char*) malloc(strlen(node->left->token_instance));
             sprintf(buffer, "-%s", node->left->token_instance + 1); //-minus the letter @ 0
             return buffer;
@@ -223,9 +236,10 @@ char* funcF(node_t* node){
 
 // assignment | read int and allocate memory | print value to screen
 // B | C | J (right -> B) (center-> C) (right-> J)
+// calling other non-terminals.
 void funcG(node_t* node){
-    printf("\nEntering G\n");
 
+    printf("\nEntering G\n");
     if (node->left != NULL) {
         switch(node->left->Label) {
             case 'B':
@@ -244,19 +258,20 @@ void funcG(node_t* node){
                 break;
         }
     } else {
-        printf("node G is NULL\n");
+        printf("ERROR node G is NULL\n");
     }
 
 }
-//
+///////////////////////////////////////////////////////////////////////////////////////////////
 // if, for | assignment, read int and allocate memory, print value (E? | G. | empty)
+// has delimiters in the center (second child {. | ?})
 void funcH(node_t* node){
 //    printf("\n in the dame funcH: %c -- %s \n", node->left->Label, node->left->token_instance);
     //if left is empty out!
     printf("\nEntering H\n");
 
     if (strcmp(node->left->token_instance, "Empty") == 0){
-        printf("E-L- This is empty!!\n");
+        printf("H This is empty!!\n");
         return;
     }
     //calling node G, if the label is G, { . t2 *" } || {. & t3}
@@ -274,26 +289,25 @@ void funcH(node_t* node){
             default:
                 break;
         }
+    }else {
+        printf("ERROR node H is NULL\n");
     }
 }
-
-
+/////////////////////////////////////////////////////////////////////////////////////////
 // print integer value to screen (sum, int, or identifier)
 // *"A. (left -> *" (print value)) (center -> A) (right -> .)
+// J is responsible for printing the value to screen as well as calling funcA
 void funcJ(node_t* node){
-//    printf("\n in func J: %c -- %s \n", node->left->Label, node->left->token_instance);
-    // *"A.
-    // left -> *"
+    printf("\nEntering J\n");
     if(node->left != NULL){
         if (node->center->Label == 'A') {
-            printf("funcJ- C: %c -- %s \n", node->center->Label, node->center->token_instance);
             char *value = funcA(node->center);
             fprintf(global_file_pointer, "WRITE %s\n", value);
-
         }
-    }else{printf("ERROR in J in Generation.cpp\n");}
+    }else{printf("ERROR in J, node J is NULL\n");}
 
 }
+///////////////////////////////////////////////////////////////////////////////
 // H ? D | Identifier (left -> H | empty) (center-> ?) (right -> L (recursive))
 void funcL(node_t* node){
     //if it is empty on the left.
@@ -302,18 +316,18 @@ void funcL(node_t* node){
         return;
     }
     else{
-        printf("Calling H and L IN L\n");
+        printf("Calling H and L -- > in L\n");
         funcH(node->left);
         funcL( node->right);
     }
 
 }
-
+/////////////////////////////////////////////////////////////////////////////////
 // K -> F ?$ | . (first set of K = t1 t2 | .
 // (left-> F(Call F) | .) (center-> ?$ (add))
 // value is nodeptr.child1 from A
 // if it is ff it is the sum (those two Fs)return that.
-// . if it is an identifier we need to find that identfier.
+// . if it is an identifier we need to find that identifier.
 char* funcK(node_t* node, char* value){
 
     printf("\ninside of K Called from A\n");
@@ -323,24 +337,24 @@ char* funcK(node_t* node, char* value){
         char* value_1 = funcF(node->left);
     //
         //need ne var
-        char* temp_val = Gen_temp_var();
+        char* tempStr = Gen_temp_var();
         fprintf(global_file_pointer,"LOAD %s\n", value);
         fprintf(global_file_pointer,"ADD %s\n", value_1); //from F
-        fprintf(global_file_pointer,"STORE %s\n", temp_val);// store in the newly temp-var
+        fprintf(global_file_pointer,"STORE %s\n", tempStr);// store in the newly temp-var
 
         printf("F from K If statement  %s \n", value);
-        return temp_val; //return the two F sum
+        return tempStr; //return the two F sum
     }
     else if(node->left->token_instance[0] == '.'){// . no sum just return the value.
-        char* temp_val = Gen_temp_var();
-        printf("\n new temp val creatd %s\n", temp_val);
+        char* tempStr = Gen_temp_var();
+        printf("\n new temp val creatd %s\n", tempStr);
         printf("F from K ELSE statment %s \n", value);
         //fprintf("LOAD %S \n", nodeptr.child1);
         //(store T0\n)
         fprintf(global_file_pointer,"LOAD %s\n", value);
-        fprintf(global_file_pointer, "STORE %s\n", temp_val);
+        fprintf(global_file_pointer, "STORE %s\n", tempStr);
 
-        return temp_val;
+        return tempStr;
     }
 
     return NULL;
