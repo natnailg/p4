@@ -167,7 +167,7 @@ void funcE(node_t* node){
 //            value1 0
             fprintf(global_file_pointer, "LOAD %s\n", value1);
             fprintf(global_file_pointer, "SUB %s\n", value2);
-            fprintf(global_file_pointer, "BRZNEG: out1\n");
+            fprintf(global_file_pointer, "BRZNEG out1\n");
             funcH(node->far_right);
             fprintf(global_file_pointer, "out1: NOOP\n");
 
