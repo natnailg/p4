@@ -63,24 +63,6 @@ void Generation_code(node_t* root){
     }else{
         printf("Root Node not met in generation_Code\n");
     }
-
-//    fprintf(global_file_pointer, "STOP\n");
-//
-//    // we also need to set the var read from the tree for %3242 or v23 to 0
-//    for (int i = 0; i < max_size_table; i++){
-//        if(table_array[i] != '\0'){
-//            fprintf(global_file_pointer,"%s 0\n", table_array[i]);
-//        }
-//
-//    }
-//    // i need to loop and assign 0 to the created variable
-//    for(int i = 0; i < Max_temp_variables; i++){
-//        if (Temp_var_table[i] != '\0') {
-//            fprintf(global_file_pointer,"%s 0\n", Temp_var_table[i]);
-//        }
-//    }
-
-//    fprintf(global_file_pointer, "STOP\n");
 }
 /////////////////////////////////////////
 //stop function
@@ -166,7 +148,16 @@ void funcD(node_t* node){
 void funcE(node_t* node){
     // if A > A call H
     if(node->left != NULL) {
-        printf("E called\n");
+
+//        P-> left = E_tk_ptr; //,;
+//        tokens = Scanner(); //consume
+//        P-> center = A();
+//        P-> right = A();
+//        P-> far_right = H();
+        if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
+            printf("funC--  %c  -- %s\n\n", node->center->token_id, node->center->token_instance);
+            printf("E called\n");
+        }
     }
     return;
 

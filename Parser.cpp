@@ -236,7 +236,7 @@ node_t* E(){
         E_tk_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
         E_tk_ptr->token_ID = tokens.tokenid; // this is for the semantics check
         strncpy(E_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
-        P-> left = E_tk_ptr;
+        P-> left = E_tk_ptr; //,;
 
         tokens = Scanner(); //consume
         P-> center = A();
