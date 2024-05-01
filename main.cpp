@@ -82,8 +82,10 @@ int main(int argc, char* argv[]){
 //    Symbol_Table_print(); //calling it to print the memory table.
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
-    const char *file_path = "output.asm";
-    open_file_global(file_path);
+
+    char* buff = (char*) malloc (sizeof(char)*10);
+    sprintf(buff, "%s.asm",Readin);
+    open_file_global(buff);
 
     //calling the generation function with the root.
     Generation_code(root);

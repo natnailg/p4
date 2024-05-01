@@ -13,7 +13,9 @@
 ////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition
 // function to open the global files
-void open_file_global(const char *file_path) {
+void open_file_global(char *file_path) {
+
+
     global_file_pointer = fopen(file_path, "w"); // Open file in append mode
     if (global_file_pointer == NULL) {
         perror("Error opening file\n");
@@ -47,7 +49,7 @@ char* Gen_temp_var(){
     // we need to create new temp variable name (T0, T1, T2, ...)
     snprintf(temp, 10, "T%d", table_index_var);
 
-    // atore the new temp var in the Temp_var_table
+    // store the new temp var in the Temp_var_table
     Temp_var_table[table_index_var] = temp;
     table_index_var++;
 
@@ -217,10 +219,6 @@ char* funcF(node_t* node){
     if (node->left->token_ID == 1){
         //upper case positive
         if (isupper (node->left->token_instance[0])){
-
-//        if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
-            //copy/duplicate
-            printf("in positive\n");
             return strdup(node->left->token_instance + 1); // - the letter (duplicates from index (1)->). duplicates starting from
 
         }else{//lower case negative

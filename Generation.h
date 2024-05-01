@@ -24,7 +24,7 @@ char* funcK(node_t*, char*);
 char* Gen_temp_var();
 void STOP_ASM();
 void Generation_code(node_t*);
-void open_file_global(const char *file_path);
+void open_file_global(char *file_path);
 void close_file();
 
 #endif //P4_GENERATION_H
