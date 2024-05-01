@@ -183,11 +183,15 @@ void funcE(node_t* node){
         }
         else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
 //            //we call F that get either an int or identifier.
-//
+                // ,; for the first operand number of times, do the second operand
             char* value = funcF(node->center);
+
             //we then load that
             fprintf(global_file_pointer, "LOAD %s\n", value);
-            fprintf(global_file_pointer, "Loop: %s\n", value);
+            fprintf(global_file_pointer, "Loop: %s\n", value); //while F
+            funcH(node->right);
+//            fprintf(global_file_pointer,"LOAD ")
+//            fprintf();
 //            fprintf(global_file_pointer, "")
 
 //            // since F give me an int or Identifier we need to load that in
@@ -212,7 +216,9 @@ char* funcF(node_t* node){
     //t1 int
     if (node->left->token_ID == 1){
         //upper case positive
-        if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
+        if (isupper (node->left->token_instance[0])){
+
+//        if (node->left->token_instance[0] >= 'A' && node->left->token_instance[0] <= 'Z'){
             //copy/duplicate
             printf("in positive\n");
             return strdup(node->left->token_instance + 1); // - the letter (duplicates from index (1)->). duplicates starting from
