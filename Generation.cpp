@@ -10,11 +10,11 @@
 #include "Generation.h"
 #include "semantics.h"
 
-// counter for
+// counter for,  loop and out (For nested if and loops).
 int loop_count = 0; //
 int out_count = 0;
 
-////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition
 // function to open the global file so, we can write to it later in the functions.
 void open_file_global(char *file_path) {
@@ -31,7 +31,7 @@ void close_file() {
         global_file_pointer = NULL;
     }
 }
-///////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 // create a function for temp varaiables.
 #define Max_temp_variables 20
 char* Temp_var_table[Max_temp_variables];
@@ -50,7 +50,7 @@ char* Gen_temp_var(){
         return NULL;
     }
     // we need to create new temp variable name (T0, T1, T2, ...)
-    snprintf(temp, 10, "V%d", table_index_var);
+    snprintf(temp, 10, "T%d", table_index_var);
 
     // store the new temp var in the Temp_var_table
     Temp_var_table[table_index_var] = temp;
@@ -58,7 +58,7 @@ char* Gen_temp_var(){
 
     return temp;
 }
-/////////////////////////////
+///////////////////////////////////////////////////////////////
 //create a function for Generation_code
 void Generation_code(node_t* root){
     //checking for the root and calling S.
@@ -69,7 +69,7 @@ void Generation_code(node_t* root){
         printf("Root Node not met in generation_Code\n");
     }
 }
-/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 //stop function
 void STOP_ASM(){
 
@@ -88,14 +88,14 @@ void STOP_ASM(){
         }
     }
 }
-/////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 // read in int and allocate memory to, any number of additional operations
 // (right->C) (center->D)
 void funcS(node_t* root) {
     funcC(root->left);
     funcD(root->center);
     STOP_ASM(); //closing out
-    printf("Compiled check the .asm file\n");
+    printf("Compiled check out the .asm file\n");
 }
 // A->FK (left->F)(center->K)
 // sum " int or identifier (given in class) // we can just return and int in class lecture.
@@ -154,11 +154,7 @@ void funcE(node_t* node){
     }
     // if A > A call H
     if(node->left != NULL) {
-//        P-> left = E_tk_ptr; //,;
-//        tokens = Scanner(); //consume
-//        P-> center = A();
-//        P-> right = A();
-//        P-> far_right = H();
+
         if(node->left->token_instance[0] == ',' && node->left->token_instance[1] != ';'){
             //AAH
             char* value1 = funcA(node->center);
@@ -182,7 +178,7 @@ void funcE(node_t* node){
         }
         else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
 //            //we call F that get either an int or identifier.
-                // ,; for the first operand number of times, do the second operand
+                // , ; for the first operand number of times, do the second operand
             char* value = funcF(node->center);
 
             char* tempStr = Gen_temp_var(); //temp var
@@ -303,7 +299,7 @@ void funcJ(node_t* node){
 void funcL(node_t* node){
     //if it is empty on the left.
     if (strcmp(node->left->token_instance, "Empty") == 0){
-        printf("\nD-L- This is empty!!\n");
+//        printf("\nD-L- This is empty!!\n");
         return;
     }
     else{
