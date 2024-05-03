@@ -78,19 +78,17 @@ int main(int argc, char* argv[]){
     printf("printing from semantics \n");
 
     pre_order_traversal(root, 0);
-
-//    Symbol_Table_print(); //calling it to print the memory table.
+    //
     Static_semantic_print();
     ///////////////////////////////////////////////////////////
-
     char* buff = (char*) malloc (sizeof(char)*10);
     sprintf(buff, "%s.asm",Readin);
     open_file_global(buff);
 
     //calling the generation function with the root.
     Generation_code(root);
-//    funcS(root);
 
+    // closing the ASM files
     close_file();
     /////////////////////////////////////////////////////////
     // Free the memory allocated for the

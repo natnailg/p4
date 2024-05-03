@@ -12,29 +12,28 @@
 
 ////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition
-// function to open the global files
+// function to open the global file so, we can write to it later in the functions.
 void open_file_global(char *file_path) {
-
 
     global_file_pointer = fopen(file_path, "w"); // Open file in append mode
     if (global_file_pointer == NULL) {
         perror("Error opening file\n");
     }
 }
-
+// Responsible for closing the file we have created for the asm
 void close_file() {
     if (global_file_pointer != NULL) {
         fclose(global_file_pointer);
         global_file_pointer = NULL;
     }
 }
-
 ///////////////////////
 // create a function for temp varaiables.
 #define Max_temp_variables 20
 char* Temp_var_table[Max_temp_variables];
 int table_index_var = 0;
 
+// This is for generating a new new temp variables.
 char* Gen_temp_var(){
     if (table_index_var >= Max_temp_variables) {
         printf("Error: Max number of temp vars reached\n");
@@ -47,7 +46,7 @@ char* Gen_temp_var(){
         return NULL;
     }
     // we need to create new temp variable name (T0, T1, T2, ...)
-    snprintf(temp, 10, "T%d", table_index_var);
+    snprintf(temp, 10, "V%d", table_index_var);
 
     // store the new temp var in the Temp_var_table
     Temp_var_table[table_index_var] = temp;
@@ -58,7 +57,7 @@ char* Gen_temp_var(){
 /////////////////////////////
 //create a function for Generation_code
 void Generation_code(node_t* root){
-
+    //checking for the root and calling S.
     if (root->Label == 'S'){
         funcS(root);
 
@@ -86,7 +85,6 @@ void STOP_ASM(){
     }
 }
 /////////////////////////////
-
 // read in int and allocate memory to, any number of additional operations
 // (right->C) (center->D)
 void funcS(node_t* root) {
@@ -188,10 +186,26 @@ void funcE(node_t* node){
                 // ,; for the first operand number of times, do the second operand
             char* value = funcF(node->center);
 
-            //we then load that
-            fprintf(global_file_pointer, "LOAD %s\n", value);
-            fprintf(global_file_pointer, "Loop: %s\n", value); //while F
+
+            char* tempStr = Gen_temp_var(); //temp var
+
+            fprintf(global_file_pointer, "LOAD %s", value);
+            fprintf(global_file_pointer, "STORE %S", tempStr);
+
+            //we then load that with loop like the asm example.
+            fprintf(global_file_pointer, "Loop: LOAD %s\n", value); //while F
+            fprintf(global_file_pointer,"SUB 1 \n")
+            fprintf(global_file_pointer,"BRZNEG: out1 \n")
             funcH(node->right);
+            fprintf(global_file_pointer, "STORE %s \n", value)
+            fprintf(global_file_pointer, "BR Loop\n")
+
+            //breaking out the loop
+            fprintf(global_file_pointer, "out1: NOOP\n");
+
+
+
+
 //            fprintf(global_file_pointer,"LOAD ")
 //            fprintf();
 //            fprintf(global_file_pointer, "")
