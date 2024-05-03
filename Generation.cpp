@@ -195,10 +195,10 @@ void funcE(node_t* node){
             //we then load that with loop like the asm example.
             fprintf(global_file_pointer, "Loop: LOAD %s\n", value); //while F
             fprintf(global_file_pointer,"SUB 1 \n")
-            fprintf(global_file_pointer,"BRZNEG: out1 \n")
+            fprintf(global_file_pointer,"BRZNEG: out1 \n");
             funcH(node->right);
-            fprintf(global_file_pointer, "STORE %s \n", value)
-            fprintf(global_file_pointer, "BR Loop\n")
+            fprintf(global_file_pointer, "STORE %s \n", value);
+            fprintf(global_file_pointer, "BR Loop\n");
 
             //breaking out the loop
             fprintf(global_file_pointer, "out1: NOOP\n");
