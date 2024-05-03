@@ -10,6 +10,10 @@
 #include "Generation.h"
 #include "semantics.h"
 
+
+int loop_count = 0; //
+int out_count = 0;
+
 ////////////////////////////////
 FILE *global_file_pointer = NULL; // Global variable definition
 // function to open the global file so, we can write to it later in the functions.
@@ -176,9 +180,9 @@ void funcE(node_t* node){
 //            value1 0
             fprintf(global_file_pointer, "LOAD %s\n", value1);
             fprintf(global_file_pointer, "SUB %s\n", value2);
-            fprintf(global_file_pointer, "BRZNEG out1\n");
+            fprintf(global_file_pointer, "BRZNEG out%d\n",out_count);
             funcH(node->far_right);
-            fprintf(global_file_pointer, "out1: NOOP\n");
+            fprintf(global_file_pointer, "out%d: NOOP\n", out_count++);
 
         }
         else if (node->left->token_instance[0] == ',' && node->left->token_instance[1] == ';') {
@@ -186,40 +190,22 @@ void funcE(node_t* node){
                 // ,; for the first operand number of times, do the second operand
             char* value = funcF(node->center);
 
-
             char* tempStr = Gen_temp_var(); //temp var
-
-            fprintf(global_file_pointer, "LOAD %s", value);
-            fprintf(global_file_pointer, "STORE %S", tempStr);
+            fprintf(global_file_pointer, "LOAD %s \n", value);
+            fprintf(global_file_pointer, "STORE %s \n", tempStr);
 
             //we then load that with loop like the asm example.
-            fprintf(global_file_pointer, "Loop: LOAD %s\n", value); //while F
+            fprintf(global_file_pointer, "Loop%d: LOAD %s\n", loop_count,value); //while F
             fprintf(global_file_pointer,"SUB 1 \n");
-            fprintf(global_file_pointer,"BRZNEG: out1 \n");
+            fprintf(global_file_pointer,"BRNEG out%d \n", out_count);
             funcH(node->right);
             fprintf(global_file_pointer, "STORE %s \n", value);
-            fprintf(global_file_pointer, "BR Loop\n");
+            fprintf(global_file_pointer, "BR Loop%d\n", loop_count++);
 
             //breaking out the loop
-            fprintf(global_file_pointer, "out1: NOOP\n");
+            fprintf(global_file_pointer, "out%d: NOOP\n", out_count++);
 
 
-
-
-//            fprintf(global_file_pointer,"LOAD ")
-//            fprintf();
-//            fprintf(global_file_pointer, "")
-
-//            // since F give me an int or Identifier we need to load that in
-//            fprintf(global_file_pointer, "LOAD %s\n", value);
-//            //do H F times
-//
-//
-//            printf("E called (F called above!) %s\n", value);
-//            funcH(node->right);
-//            printf("E called (H called above!)\n");
-//
-//
         }
     }
 }
