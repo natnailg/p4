@@ -87,6 +87,8 @@ void STOP_ASM(){
             fprintf(global_file_pointer,"%s 0\n", Temp_var_table[i]);
         }
     }
+
+    printf("\n\tCompiled check out the .asm file\n");
 }
 //////////////////////////////////////////////////////////////////////////////////
 // read in int and allocate memory to, any number of additional operations
@@ -95,7 +97,7 @@ void funcS(node_t* root) {
     funcC(root->left);
     funcD(root->center);
     STOP_ASM(); //closing out
-    printf("Compiled check out the .asm file\n");
+
 }
 // A->FK (left->F)(center->K)
 // sum " int or identifier (given in class) // we can just return and int in class lecture.

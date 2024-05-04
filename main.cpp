@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
     node_t* root = parser(outputfile); //passing the char array not the file pointer of the filtered file to the parser
     if (root == NULL) {
         printf("Failed to create abstract syntax tree.\n");
-        return NULL;
+        return;
     }
 
     // Add a print statement before and after calling print_preorder_tree
