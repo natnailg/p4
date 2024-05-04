@@ -88,7 +88,7 @@ void STOP_ASM(){
         }
     }
 
-    printf("\n\tCompiled check out the .asm file\n");
+    printf("\nCompiled check out the .asm file\n");
 }
 //////////////////////////////////////////////////////////////////////////////////
 // read in int and allocate memory to, any number of additional operations
